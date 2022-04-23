@@ -30,5 +30,5 @@ module.exports = {
     variants: {
       extend: {},
     },
-    plugins: [require('@tailwindcss/forms'),require('@tailwindcss/typography'), require("daisyui")],
+    plugins: [require('@tailwindcss/forms'),require('@tailwindcss/typography'), require("daisyui"), require('@tailwindcss/aspect-ratio')],
 };
