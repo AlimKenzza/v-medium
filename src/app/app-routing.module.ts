@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent},
   { path: 'signup-company', component:OrganizationSignupComponent},
-  { path: 'news', component: NewsComponent}
+  { path: 'news', component: NewsComponent},
+  { path: 'company-signup', component: OrganizationSignupComponent}
 ];
 
 
