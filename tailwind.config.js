@@ -3,6 +3,32 @@ const { guessProductionMode } = require("@ngneat/tailwind");
 process.env.TAILWIND_MODE = guessProductionMode() ? 'build' : 'watch';
 
 module.exports = {
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          
+          "primary": "#6667AB",
+                   
+          "secondary": "#00589B",
+                   
+          "accent": "#FF952C",
+                   
+          "neutral": "#D0E5EC",
+                   
+          "base-100": "#FFFFFF",
+                   
+          "info": "#3ABFF8",
+                   
+          "success": "#36D399",
+                   
+          "warning": "#FBBD23",
+                   
+          "error": "#F87272",
+                   },
+      },
+    ],
+  },
     prefix: '',
     mode: 'jit',
     purge: {
