@@ -15,6 +15,7 @@ import { LoginResponse } from '../login/login/login-response.payload';
 })
 export class AuthService {
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
+  @Output() username: EventEmitter<string> = new EventEmitter();
 
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken()
@@ -25,7 +26,7 @@ export class AuthService {
     private localStorage: LocalStorageService) { }
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
-    return this.httpClient.post<SignupResponsePayload>('http://localhost:5001/api/v1/account/register', signupRequestPayload)
+    return this.httpClient.post<SignupResponsePayload>('https://localhost:5001/api/v1/account/register', signupRequestPayload)
     .pipe(map(data => {
       this.localStorage.store('name', data.body.name);
       this.localStorage.store('email', data.body.email)
@@ -37,17 +38,19 @@ export class AuthService {
   }
 
   login(loginRequestPayload: LoginRequestPayload): Observable<any> {
-    return this.httpClient.post<LoginResponse>('http://localhost:5001/api/Auth/login', loginRequestPayload)
+    return this.httpClient.post<LoginResponse>('https://localhost:5001/api/Auth/login', loginRequestPayload)
     .pipe(map(data => {
       this.localStorage.store('authenticationToken', data.accessToken);
       this.localStorage.store('refreshToken', data.refreshToken);
+      this.localStorage.store('username', loginRequestPayload.login);
       this.loggedIn.emit(true);
+      this.username.emit(loginRequestPayload.login);
       return true;
     }));
   }
 
   refreshToken() {
-    return this.httpClient.post<LoginResponse>('http://localhost:5001/api/Auth/refresh',
+    return this.httpClient.post<LoginResponse>('https://localhost:5001/api/Auth/refresh',
       this.refreshTokenPayload)
       .pipe(tap(response => {
         this.localStorage.clear('authenticationToken');
@@ -68,6 +71,11 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.getJwtToken() != null;
   }
+
+  getUserName() {
+    return this.localStorage.retrieve('username');
+  }
+
 
 
 

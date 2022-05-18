@@ -1,19 +1,31 @@
 <div class="bg-indigo-200 min-h-screen flex flex-col">
     <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="bg-purple-800 px-6 py-8 rounded shadow-md text-black w-full">
+        
             <h1 class="mb-8 text-white text-3xl text-center">Login</h1>
-
+        
             <input 
                 type="text"
-                class="block border border-grey-light w-full p-3 rounded mb-4"
-                name="email"
-                placeholder="Email" />
+                class="form-control block border border-grey-light w-full p-3 rounded mb-4"
+                name="login"
+                [formControlName]="'login'"
+                placeholder="Username" />
+                <span *ngIf="!loginForm.get('login').valid && loginForm.get('login').touched">
+                    Please provide a valid username
+                 </span>   
+
 
             <input 
                 type="password"
-                class="block border border-grey-light w-full p-3 rounded mb-4"
+                class="form-control block border border-grey-light w-full p-3 rounded mb-4"
                 name="password"
-                placeholder="Password" />
+                placeholder="Password" 
+                [formControlName]="'password'" />
+                <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+                    Password cannot be empty
+                </span>  
+
 
             <button
                 type="submit"
@@ -29,6 +41,7 @@
                 </a>
             </div>
         </div>
+        </form>
 
         <div class="text-grey-dark mt-6">
             Not registered yet? 
