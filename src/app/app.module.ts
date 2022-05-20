@@ -7,10 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login/login.component';
-import { SignupComponent } from './auth/signup/signup/signup.component';
-import { OrganizationSignupComponent } from './auth/organization-signup/organization-signup.component';
 import { NewsComponent } from './components/news/news.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxWebstorageModule } from 'ngx-webstorage';
@@ -26,8 +24,6 @@ import { SignupNewComponent } from './auth/signup-new/signup-new.component';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent,
-    OrganizationSignupComponent,
     NewsComponent,
     SignupNewComponent
   ],
@@ -38,7 +34,8 @@ import { SignupNewComponent } from './auth/signup-new/signup-new.component';
     HttpClientModule,
     BrowserAnimationsModule,
     NgxWebstorageModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

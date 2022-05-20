@@ -1,8 +1,10 @@
 export interface SignupRequestPayload {
+    login: string;
     firstName: string;
     lastName: string;
     phone: string;
-    preferLanguage: string;
+    role: number;
     password: string;
+    confirmPassword: string;
     email: string;
 }

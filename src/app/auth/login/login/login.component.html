@@ -68,18 +68,19 @@
         </div>
         <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
           <h1 class="text-center mb-12 text-3xl text-indigo-600">SIGN IN TO YOUR USER ACCOUNT</h1>
-          <form>
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
             <!-- Email input -->
             <div class="mb-6">
               <input
                 type="text"
                 class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 [formControlName]="'login'"
+                name="login"
                 placeholder="Username"
               />
-              <span *ngIf="!loginForm.get('login').valid && loginForm.get('login').touched">
+              <!-- <span *ngIf="!loginForm.get('login').valid && loginForm.get('login').touched">
                     Please provide a valid username
-                 </span>   
+                 </span>    -->
             </div>
   
             <!-- Password input -->
@@ -88,11 +89,12 @@
                 type="password"
                 class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 placeholder="Password"
+                name="password"
                 [formControlName]="'password'"
               />
-              <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+              <!-- <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
                 Password cannot be empty
-            </span> 
+            </span>  -->
             </div>
   
             <div class="flex justify-between items-center mb-6">

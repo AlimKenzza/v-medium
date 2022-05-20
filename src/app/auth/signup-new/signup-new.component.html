@@ -1,68 +1,136 @@
-<br>
-<br>
-<br>
-    <div class="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-6xl">
-      <div class="hidden bg-cover lg:block lg:w-7/12" style="background-image:url('../assets/images/signup.png')"></div>
-      
-      <div class="w-full px-6 py-8 md:px-8 lg:w-5/12">
-          <h2 class="text-2xl font-semibold text-center text-gray-700 dark:text-white">Brand</h2>
+<body class="min-h-screen text-gray-900 flex justify-center">
+    <div
+      class="max-w-screen-xl m-0 sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1"
+    >
+      <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+        <div>
+          <img
+            src="../assets/images/17.png"
+            class="w-32 mx-auto"
+          />
+        </div>
+        <div class="mt-12 flex flex-col items-center">
+          <h1 class="text-2xl xl:text-3xl font-extrabold">
+            Sign up for V-Medium
+          </h1>
+          <div class="w-full flex-1 mt-8">
+        
 
-          <p class="text-xl text-center text-gray-600 dark:text-gray-200">Welcome back!</p>
-
-          <a href="#" class="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-200 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <div class="px-4 py-2">
-                  <svg class="w-6 h-6" viewBox="0 0 40 40">
-                      <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#FFC107"/>
-                      <path d="M5.25497 12.2425L10.7308 16.2583C12.2125 12.59 15.8008 9.99999 20 9.99999C22.5491 9.99999 24.8683 10.9617 26.6341 12.5325L31.3483 7.81833C28.3716 5.04416 24.39 3.33333 20 3.33333C13.5983 3.33333 8.04663 6.94749 5.25497 12.2425Z" fill="#FF3D00"/>
-                      <path d="M20 36.6667C24.305 36.6667 28.2167 35.0192 31.1742 32.34L26.0159 27.975C24.3425 29.2425 22.2625 30 20 30C15.665 30 11.9842 27.2359 10.5975 23.3784L5.16254 27.5659C7.92087 32.9634 13.5225 36.6667 20 36.6667Z" fill="#4CAF50"/>
-                      <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#1976D2"/>
-                  </svg>
+            <!-- <div class="my-12 border-b text-center">
+              <div
+                class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2"
+              >
+                Or sign up with e-mail
               </div>
+            </div> -->
 
-              <span class="w-5/6 px-4 py-3 font-bold text-center">Sign in with Google</span>
-          </a>
-
-          <div class="flex items-center justify-between mt-4">
-              <span class="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
-
-              <a href="#" class="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login with email</a>
-
-              <span class="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
-          </div>
-
-          <div class="mt-4">
-              <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Email Address</label>
-              <input id="LoggingEmailAddress" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email">
-          </div>
-
-          <div class="mt-4">
-              <div class="flex justify-between">
-                  <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="loggingPassword">Password</label>
-                  <a href="#" class="text-xs text-gray-500 dark:text-gray-300 hover:underline">Forget Password?</a>
-              </div>
-
-              <input id="loggingPassword" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password">
-          </div>
-
-          <div class="mt-8">
-              <button class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                  Login
+            <div class="mx-auto max-w-xs">
+                <form [formGroup]="signupForm" (ngSubmit)="signup()">
+              <input
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                type="text"
+                placeholder="Login"
+                [formControlName]="'login'"
+                name="login"
+              />
+              <input
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                type="text"
+                placeholder="First Name"
+                [formControlName]="'firstName'"
+                name="firstName"
+              />
+              <input
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                type="text"
+                placeholder="Last Name"
+                [formControlName]="'lastName'"
+                name="lastName"
+              />
+              <input
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                type="email"
+                placeholder="Email"
+                [formControlName]="'email'"
+                name="email"
+              />
+              <input
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                type="text"
+                placeholder="Phone"
+                [formControlName]="'phone'"
+                name="phone"
+              />
+              <input
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                type="password"
+                placeholder="Password"
+                [formControlName]="'password'"
+                name="password"
+              />
+              <input
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                type="password"
+                placeholder="Confirm Password"
+                [formControlName]="'confirmPassword'"
+                name="confirmPassword"
+              />
+              <button
+                class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              >
+                <svg
+                  class="w-6 h-6 -ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                  <circle cx="8.5" cy="7" r="4" />
+                  <path d="M20 8v6M23 11h-6" />
+                </svg>
+                <span class="ml-3">
+                  Sign Up
+                </span>
               </button>
+              <p class="mt-6 text-xs text-gray-600 text-center">
+                I agree to abide by templatana's
+                <a href="#" class="border-b border-gray-500 border-dotted">
+                  Terms of Service
+                </a>
+                and its
+                <a href="#" class="border-b border-gray-500 border-dotted">
+                  Privacy Policy
+                </a>
+              </p>
+              </form>
+            </div>
           </div>
-          
-          <div class="flex items-center justify-between mt-4">
-              <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
-
-              <a href="#" class="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign up</a>
-              
-              <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
-              <br>
-              <br>
-              <br>
-          </div>
+        </div>
       </div>
-  </div>
-
-  <br>
-  <br>
-  <br>
+      <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
+        <div
+          class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
+          style="background-image: url('../assets/images/signup.svg');"
+        ></div>
+      </div>
+    </div>
+    <div class="REMOVE-THIS-ELEMENT-IF-YOU-ARE-USING-THIS-PAGE hidden treact-popup fixed inset-0 flex items-center justify-center" style="background-color: rgba(0,0,0,0.3);">
+        <div class="max-w-lg p-8 sm:pb-4 bg-white rounded shadow-lg text-center sm:text-left">
+          
+          <h3 class="text-xl sm:text-2xl font-semibold mb-6 flex flex-col sm:flex-row items-center">
+            <div class="bg-green-200 p-2 rounded-full flex items-center mb-4 sm:mb-0 sm:mr-2">
+              <svg class="text-green-800 inline-block w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+              </div>
+            Free TailwindCSS Component Kit!
+          </h3>  
+          <p>I recently released Treact, a <span class="font-bold">free</span> TailwindCSS Component Kit built with React.</p>
+          <p class="mt-2">It has 52 different UI components, 7 landing pages, and 8 inner pages prebuilt. And they are customizable!</p>
+          <div class="mt-8 pt-8 sm:pt-4 border-t -mx-8 px-8 flex flex-col sm:flex-row justify-end leading-relaxed">
+            <button class="close-treact-popup px-8 py-3 sm:py-2 rounded border border-gray-400 hover:bg-gray-200 transition duration-300">Close</button>
+            <a class="font-bold mt-4 sm:mt-0 sm:ml-4 px-8 py-3 sm:py-2 rounded bg-purple-700 text-gray-100 hover:bg-purple-900 transition duration-300 text-center" href="https://treact.owaiskhan.me" target="_blank">See Treact</a>
+          </div>
+        </div>
+      </div>
+  </body>

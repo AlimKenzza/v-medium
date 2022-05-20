@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { SignupRequestPayload } from '../signup/signup/signup-request.payload';
+import { SignupRequestPayload } from '../signup-new/signup-request.payload';
 import { Observable } from 'rxjs';
-import { SignupResponsePayload } from '../signup/signup/signup-response.payload';
+import { SignupResponsePayload } from '../signup-new/signup-response.payload';
 import { map, tap } from 'rxjs/operators';
 import { LocalStorageService } from 'ngx-webstorage';
 import { EventEmitter, Injectable, Output } from '@angular/core';
@@ -26,13 +26,14 @@ export class AuthService {
     private localStorage: LocalStorageService) { }
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
-    return this.httpClient.post<SignupResponsePayload>('https://localhost:5001/api/v1/account/register', signupRequestPayload)
+    return this.httpClient.post<SignupResponsePayload>('https://localhost:5001/api/Auth/register', signupRequestPayload)
     .pipe(map(data => {
-      this.localStorage.store('name', data.body.name);
-      this.localStorage.store('email', data.body.email)
-      this.localStorage.store('phoneNumber', data.body.phoneNumber)
-      this.localStorage.store('surname', data.body.surname)
-      this.loggedIn.emit(true);
+      // this.localStorage.store('firstName', data.firstName);
+      // this.localStorage.store('email', data.email)
+      // this.localStorage.store('phoneNumber', data.phone)
+      // this.localStorage.store('lastName', data.lastName)
+      // this.localStorage.store('role', data.role)
+      // this.loggedIn.emit(true);
       return true;
     }));
   }
