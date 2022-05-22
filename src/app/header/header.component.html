@@ -90,16 +90,16 @@
           <div class="items-center justify-center lg:inline-flex lg:flex-row">
             <div *ngIf="isLoggedIn" ngbDropdown class="items-center justify-center lg:inline-flex lg:flex-row">
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button class="text-gray-300" (click)="logout()" ngbDropdownItem>Logout</button>
+                <button class="text-cyan-600 items-center justify-center px-3 py-2" (click)="logout()" ngbDropdownItem>Logout</button>
             </div>
-              <button class="userdetails" id="dropdownBasic1" ngbDropdownToggle>
+              <button (click)="getProfile()" id="dropdownBasic1">
                 <!-- <img class="rounded-full border border-indigo-800	 shadow-sm h-full" style="height: 40px; width: 40px;" src="../assets/images/usericon.png"> -->
-                <div class="avatar placeholder">
+                <div class="avatar placeholder bg-indigo-200">
                   <div class="bg-neutral-focus text-neutral-content rounded-full w-8">
                     <span class="text-xs">AA</span>
                   </div>
                 </div>
-                <p class="lg:inline-flex lg:flex-row text-gray-300">{{username}}</p>
+                <p class="lg:inline-flex lg:flex-row text-cyan-600 items-center justify-center px-3 py-2 ">{{username}}</p>
             </button>
             </div>          
 </div>

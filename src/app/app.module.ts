@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
 import { SignupNewComponent } from './auth/signup-new/signup-new.component';
+import { ProfileComponent } from './components/profile/profile/profile.component';
+import { OrganizationSignupComponent } from './components/organization-create/organization-signup/organization-signup.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -25,7 +28,9 @@ import { SignupNewComponent } from './auth/signup-new/signup-new.component';
     HomeComponent,
     LoginComponent,
     NewsComponent,
-    SignupNewComponent
+    SignupNewComponent,
+    ProfileComponent,
+    OrganizationSignupComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import { SignupNewComponent } from './auth/signup-new/signup-new.component';
     ToastrModule.forRoot(),
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
