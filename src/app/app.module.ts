@@ -17,6 +17,8 @@ import { SignupNewComponent } from './auth/signup-new/signup-new.component';
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { OrganizationSignupComponent } from './components/organization-create/organization-signup/organization-signup.component';
 import { CookieService } from 'ngx-cookie-service';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { DatepickerComponent } from './components/datepicker/datepicker/datepicker.component';
 
 
 
@@ -30,7 +32,8 @@ import { CookieService } from 'ngx-cookie-service';
     NewsComponent,
     SignupNewComponent,
     ProfileComponent,
-    OrganizationSignupComponent
+    OrganizationSignupComponent,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserAnimationsModule,
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
-    FormsModule
+    FormsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

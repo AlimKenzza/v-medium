@@ -38,7 +38,12 @@ module.exports = {
     },
     darkMode: 'class', // or 'media' or 'class'
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+          Montserrat: ['Montserrat', 'sans-serif'],
+          PlayfairDisplay: ['Playfair Display', 'serif'],
+        },
+      },
       container: {
         center: true,
       },
