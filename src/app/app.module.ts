@@ -19,6 +19,9 @@ import { OrganizationSignupComponent } from './components/organization-create/or
 import { CookieService } from 'ngx-cookie-service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DatepickerComponent } from './components/datepicker/datepicker/datepicker.component';
+import { VolunteerProfileComponent } from './components/volunteer-profile/volunteer-profile.component';
+import { OrganizationProfileComponent } from './components/organization-profile/organization-profile.component';
+import { EventComponent } from './components/event/event.component';
 
 
 
@@ -33,7 +36,10 @@ import { DatepickerComponent } from './components/datepicker/datepicker/datepick
     SignupNewComponent,
     ProfileComponent,
     OrganizationSignupComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    VolunteerProfileComponent,
+    OrganizationProfileComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,

@@ -8,5 +8,6 @@ export interface ProfilePayload {
         "email": string,
         "phone": string,
         "role": number,
-        "status": number
+        "status": number,
+        "createdAt": string
 }

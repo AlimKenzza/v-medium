@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
@@ -21,6 +21,27 @@ export class VolunteerService {
        this.authService.getJwtToken()
     );
     return this.httpClient.post<VolunteerResponse>('https://localhost:5001/api/Volunteers/volunteer-register', volunteer, {headers:header})
+    .pipe(map(data => {
+      this.localStorage.store('categories', data.volunteeringCategories);
+      this.localStorage.store('region', data.region);
+      this.localStorage.store('experience', data.experience);
+      this.localStorage.store('description', data.description);
+      this.localStorage.store('birthdate', data.birthDate);
+      if(data.sex == true) {
+        this.localStorage.store('gender', "male");
+      }
+      this.localStorage.store('gender', "female");
+      return true;
+    }));
+  }
+
+  getVolunteerInfo(): Observable<any> {
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.get<VolunteerResponse>('https://localhost:5001/api/Volunteers/volunteer/userId',  {headers:header})
     .pipe(map(data => {
       this.localStorage.store('categories', data.volunteeringCategories);
       this.localStorage.store('region', data.region);

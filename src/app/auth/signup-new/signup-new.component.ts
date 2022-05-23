@@ -60,7 +60,7 @@ export class SignupNewComponent implements OnInit {
       .subscribe(data => {
         this.router.navigate(['/login'],
           { queryParams: { registered: 'true' } });
-          Swal.fire('Вы зарегистрировались!', 'Проверьте свою почту!', 'success').then((result) => {
+          Swal.fire('Registration successfull!', 'Complete your profile', 'success').then((result) => {
             location.reload();
           });
       }

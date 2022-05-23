@@ -5,6 +5,7 @@ import { throwError } from 'rxjs';
 import { AuthService } from '../auth/shared/auth.service';
 import { ProfilePayload } from '../auth/shared/profile-response.payload';
 import { CookieService } from 'ngx-cookie-service';
+import { VolunteerService } from '../services/volunteer.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
   username: string;
   profile: ProfilePayload;
 
-  constructor(private authService: AuthService, private router: Router, private localStorage: LocalStorageService, private cookieService: CookieService) {}
+  constructor(private authService: AuthService, private router: Router, private localStorage: LocalStorageService, private cookieService: CookieService,
+    private volunteerService: VolunteerService) {}
 
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
@@ -28,13 +30,28 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.localStorage.clear();
-    console.log(this.authService.getRefreshTokenFromCookies());
-    this.authService.logout(this.authService.getRefreshTokenFromCookies());
+    // console.log(this.authService.getRefreshTokenFromCookies());
+    // this.authService.logout(this.authService.getRefreshTokenFromCookies());
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
   }
 
   getProfile() {
+
+    this.volunteerService.getVolunteerInfo().subscribe(data => {
+      this.profile = data;
+      // this.localStorage.store('role', this.profile.role);
+      // this.localStorage.store('email', this.profile.email);
+      // this.localStorage.store('firstName', this.profile.firstName);
+      // this.localStorage.store('lastName', this.profile.lastName);
+      // this.localStorage.store('phone', this.profile.phone);
+      // this.localStorage.store('createdDate', this.profile.createdAt);
+      // this.localStorage.store('id', this.profile.id);
+      // this.router.navigateByUrl('/profile');
+    }, error => {
+      throwError(error);
+    });
+
     this.authService.userProfile().subscribe(data => {
       this.profile = data;
       this.localStorage.store('role', this.profile.role);
@@ -42,6 +59,8 @@ export class HeaderComponent implements OnInit {
       this.localStorage.store('firstName', this.profile.firstName);
       this.localStorage.store('lastName', this.profile.lastName);
       this.localStorage.store('phone', this.profile.phone);
+      this.localStorage.store('createdDate', this.profile.createdAt);
+      this.localStorage.store('id', this.profile.id);
       this.router.navigateByUrl('/profile');
     }, error => {
       throwError(error);

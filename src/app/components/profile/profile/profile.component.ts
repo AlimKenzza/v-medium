@@ -33,7 +33,18 @@ export class ProfileComponent implements OnInit {
     dropdownSettings: any = {};
     today: string;
     dateBirth: string;
+    firstName: string;
+    lastName: string;
     role:number;
+    email: string;
+    username: string;
+    description: string;
+    categoryObject: Array<any> = [];
+    createdDate: string;
+    phone: string;
+    categoryNames: Array<any> = [];
+    gender: string;
+    experience: number;
 
   constructor(private fb: FormBuilder, private volunteerService: VolunteerService, private router: Router, private toastr: ToastrService, private localStorage: LocalStorageService) { 
     this.volunteer = {
@@ -78,11 +89,28 @@ export class ProfileComponent implements OnInit {
                 category: [this.selectedItems]
             });
             this.role = this.getRole();
+            this.firstName = this.localStorage.retrieve('firstName');
+            this.lastName = this.localStorage.retrieve('lastName');
+            this.email = this.localStorage.retrieve('email');
+            this.username = this.localStorage.retrieve('username');
+            this.description = this.localStorage.retrieve('description');
+            this.createdDate = this.localStorage.retrieve('createdDate').split('T')[0];
+            this.phone = this.localStorage.retrieve('phone');
+            this.categoryNames = this.getCategories();
+            this.gender = this.localStorage.retrieve('gender');
+            this.dateBirth = this.localStorage.retrieve('birthDate').split('T')[0];
+            this.experience = this.localStorage.retrieve('experience');
+            console.log(this.phone);
   }
   onItemSelect(item: any) {
     console.log('onItemSelect', item);
     console.log(Object.values(item)[0]);
     this.categoriesIds.push(Object.values(item)[0]);
+}
+
+getCategory(id_field: number) : string {
+  var categoryName = this.categories.find(i => i.item_id === id_field)[1];
+  return categoryName;
 }
 onSelectAll(items: any) {
     console.log('onSelectAll', items);
@@ -94,6 +122,24 @@ toogleShowFilter() {
 
 getRole() :number {
   return this.localStorage.retrieve('role');
+}
+
+getCategories(): Array<any> {
+  var retrievedData = this.localStorage.retrieve("categories");
+  var categoryIds = retrievedData;
+  console.log(categoryIds);
+  for(var i = 0; i < this.categories.length; i++) {
+    var categoryName: string = "";
+    for(var j = 0; j<categoryIds.length; j++) {
+      if(this.categories[i].item_id === categoryIds[j]) {
+        categoryName = this.categories[i].item_text;
+        this.categoryNames.push(categoryName);
+      }
+    }
+    
+  }
+  console.log(this.categoryNames);
+  return this.categoryNames; 
 }
 
 createVolunteer() {
@@ -116,9 +162,9 @@ createVolunteer() {
   this.volunteer.experience = 0;
   this.volunteerService.createVolunteerProfile(this.volunteer)
       .subscribe(data => {
-        this.router.navigate(['/login'],
+        this.router.navigate(['/'],
           { queryParams: { registered: 'true' } });
-          Swal.fire('Вы успешно создали волонтерский профиль!', 'Творите добро!', 'success').then((result) => {
+          Swal.fire('You have successfully created a volunteer profile!', 'Explore and apply to events!', 'success').then((result) => {
             location.reload();
           });
       }
