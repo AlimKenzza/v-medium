@@ -6,6 +6,7 @@ import { AuthService } from '../auth/shared/auth.service';
 import { ProfilePayload } from '../auth/shared/profile-response.payload';
 import { CookieService } from 'ngx-cookie-service';
 import { VolunteerService } from '../services/volunteer.service';
+import { OrganizationService } from '../services/organization.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
   profile: ProfilePayload;
 
   constructor(private authService: AuthService, private router: Router, private localStorage: LocalStorageService, private cookieService: CookieService,
-    private volunteerService: VolunteerService) {}
+    private volunteerService: VolunteerService, private orgService: OrganizationService) {}
 
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
@@ -38,20 +39,6 @@ export class HeaderComponent implements OnInit {
 
   getProfile() {
 
-    this.volunteerService.getVolunteerInfo().subscribe(data => {
-      this.profile = data;
-      // this.localStorage.store('role', this.profile.role);
-      // this.localStorage.store('email', this.profile.email);
-      // this.localStorage.store('firstName', this.profile.firstName);
-      // this.localStorage.store('lastName', this.profile.lastName);
-      // this.localStorage.store('phone', this.profile.phone);
-      // this.localStorage.store('createdDate', this.profile.createdAt);
-      // this.localStorage.store('id', this.profile.id);
-      // this.router.navigateByUrl('/profile');
-    }, error => {
-      throwError(error);
-    });
-
     this.authService.userProfile().subscribe(data => {
       this.profile = data;
       this.localStorage.store('role', this.profile.role);
@@ -65,6 +52,8 @@ export class HeaderComponent implements OnInit {
     }, error => {
       throwError(error);
     });
+
+    
   }
 
 

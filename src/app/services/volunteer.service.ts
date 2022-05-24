@@ -41,6 +41,7 @@ export class VolunteerService {
       "Bearer " + 
        this.authService.getJwtToken()
     );
+    console.log(header);
     return this.httpClient.get<VolunteerResponse>('https://localhost:5001/api/Volunteers/volunteer/userId',  {headers:header})
     .pipe(map(data => {
       this.localStorage.store('categories', data.volunteeringCategories);
@@ -48,6 +49,7 @@ export class VolunteerService {
       this.localStorage.store('experience', data.experience);
       this.localStorage.store('description', data.description);
       this.localStorage.store('birthdate', data.birthDate);
+      this.localStorage.store('volunteerId', data.volunteerId);
       if(data.sex == true) {
         this.localStorage.store('gender', "male");
       }

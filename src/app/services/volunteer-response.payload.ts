@@ -7,5 +7,6 @@ export interface VolunteerResponse {
     description: string,
     phone: string,
     email: string,
-    login: string
+    login: string,
+    volunteerId: number
 }

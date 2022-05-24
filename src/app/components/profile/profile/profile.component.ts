@@ -135,8 +135,7 @@ getCategories(): Array<any> {
         categoryName = this.categories[i].item_text;
         this.categoryNames.push(categoryName);
       }
-    }
-    
+    }    
   }
   console.log(this.categoryNames);
   return this.categoryNames; 
@@ -191,6 +190,26 @@ handleLimitSelection() {
     } else {
         this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
     }
+}
+
+getCeo() {
+  return this.localStorage.retrieve('ceo');
+}
+
+getOrganizationName() {
+  return this.localStorage.retrieve('organizationName');
+}
+
+getLocation() {
+  return this.localStorage.retrieve('location');
+}
+
+getDescription() {
+  return this.localStorage.retrieve('description');
+}
+
+getCategoryList() {
+  return this.localStorage.retrieve('categories');
 }
 
 }
