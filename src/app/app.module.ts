@@ -23,6 +23,7 @@ import { VolunteerProfileComponent } from './components/volunteer-profile/volunt
 import { OrganizationProfileComponent } from './components/organization-profile/organization-profile.component';
 import { EventComponent } from './components/event/event.component';
 import { EventShowerComponent } from './components/event-shower/event-shower.component';
+import { CreateEventComponent } from './components/create-event/create-event.component';
 
 
 
@@ -41,7 +42,8 @@ import { EventShowerComponent } from './components/event-shower/event-shower.com
     VolunteerProfileComponent,
     OrganizationProfileComponent,
     EventComponent,
-    EventShowerComponent
+    EventShowerComponent,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,

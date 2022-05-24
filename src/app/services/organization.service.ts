@@ -6,11 +6,15 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '../auth/shared/auth.service';
 import { Organization } from '../components/organization-create/organization-request.payload';
 import { OrganizationRequest } from '../components/organization-create/organization-signup/organization-request.payload';
+import { Result } from '../model/event-result.payload';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrganizationService {
+  listingdata:Array<any> = [];
+  arrLength : number;
+  events: Result[];
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private localStorage: LocalStorageService) { }
 
@@ -55,6 +59,26 @@ export class OrganizationService {
       this.localStorage.store('ceo', data.ceo);
       this.localStorage.store('location', data.location);
       return true;
+    }));
+  }
+
+  getOrganizationEventList(): Observable<Result[]> {
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    console.log(header);
+    return this.httpClient.get('https://localhost:5001/api/Events/list/organization?Skip=0&Take=7', {observe: 'response', headers: header}).
+    pipe(map(response => {
+      this.arrLength = Object.values(response.body)[1].length;
+      for(let event = 0; event < this.arrLength; event++) {
+     
+        this.events = Object.values(response.body)[1][event];
+        this.listingdata.push(this.events);
+      
+       }
+      return this.listingdata;
     }));
   }
 }

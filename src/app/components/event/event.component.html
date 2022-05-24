@@ -6,7 +6,7 @@
         </svg>
       </div>
   
-      <input type="text" placeholder="Search by listing, location, bedroom number..." class="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+      <input type="text" placeholder="Search by listing, location..." class="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
         </div>
   
       <div class="flex items-center justify-between mt-4">
@@ -28,14 +28,14 @@
           </select>
   
           <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-            <option value="">Furnish Type</option>
+            <option value="">Social Type</option>
             <option value="fully-furnished">Fully Furnished</option>
             <option value="partially-furnished">Partially Furnished</option>
             <option value="not-furnished">Not Furnished</option>
           </select>
   
           <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-            <option value="">Any Price</option>
+            <option value="">Any Category</option>
             <option value="1000">RM 1000</option>
             <option value="2000">RM 2000</option>
             <option value="3000">RM 3000</option>
@@ -43,7 +43,7 @@
           </select>
   
           <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-            <option value="">Floor Area</option>
+            <option value="">Date</option>
             <option value="200">200 sq.ft</option>
             <option value="400">400 sq.ft</option>
             <option value="600">600 sq.ft</option>
@@ -53,7 +53,7 @@
           </select>
   
           <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-            <option value="">Bedrooms</option>
+            <option value="">EndDate</option>
             <option value="1">1 bedroom</option>
             <option value="2">2 bedrooms</option>
             <option value="3">3 bedrooms</option>
@@ -62,7 +62,7 @@
           </select>
   
           <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-            <option value="">Bathrooms</option>
+            <option value="">Organization</option>
             <option value="1">1 bathroom</option>
             <option value="2">2 bathrooms</option>
             <option value="3">3 bathrooms</option>
@@ -71,7 +71,7 @@
           </select>
   
           <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-            <option value="">Bathrooms</option>
+            <option value="">Region</option>
             <option value="1">1 space</option>
             <option value="2">2 space</option>
             <option value="3">3 space</option>
@@ -79,6 +79,7 @@
         </div>
       </div>
     </div>
+    <br>
     <div class="flex flex-row flex-wrap">
 <div class="max-w-sm rounded overflow-hidden shadow-lg mx-12 my-12" *ngFor="let event of results">
     <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains">
