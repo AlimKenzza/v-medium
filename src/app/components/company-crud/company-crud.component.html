@@ -84,8 +84,8 @@
                         </svg>
                     </div>
                     <div class="mx-4">
-                        <h4 class="text-2xl font-semibold text-gray-700">100</h4>
-                        <div class="text-gray-500">All Users</div>
+                        <h4 class="text-2xl font-semibold text-gray-700">{{eventCount}}</h4>
+                        <div class="text-gray-500">All Events</div>
                     </div>
                 </div>
                 <div class="flex items-center px-4 py-6 bg-white rounded-md shadow-md">
@@ -100,8 +100,8 @@
                         </svg>
                     </div>
                     <div class="mx-4">
-                        <h4 class="text-2xl font-semibold text-gray-700">30</h4>
-                        <div class="text-gray-500">All Blogs</div>
+                        <h4 class="text-2xl font-semibold text-gray-700">{{uncompletedEvents}}</h4>
+                        <div class="text-gray-500">Uncompleted Events</div>
                     </div>
                 </div>
                 <div class="flex items-center px-4 py-6 bg-white rounded-md shadow-md">
@@ -113,8 +113,8 @@
                         </svg>
                     </div>
                     <div class="mx-4">
-                        <h4 class="text-2xl font-semibold text-gray-700">1000</h4>
-                        <div class="text-gray-500">All Transaction</div>
+                        <h4 class="text-2xl font-semibold text-gray-700">{{completedEvents}}</h4>
+                        <div class="text-gray-500">Completed Events</div>
                     </div>
                 </div>
             </div>
@@ -137,6 +137,13 @@
                                           <th
                                         class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                           Deadline </th>
+                                          <!-- <th
+                                          class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                            Finished </th> -->
+                                           
+                                            <th
+                                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                              Status </th>
                                     <th
                                         class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                         Edit</th>
@@ -177,6 +184,21 @@
                                         <div class="text-sm leading-5 text-gray-500">{{ event.endDate.split('T')[0]}}</div>
                                     </td>
 
+                                    <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 font-bold">
+                                        <div class="text-sm leading-5 text-neutral-500">{{ event.isFinished}}</div>
+                                    </td> -->
+                                    <div *ngIf="event.isFinished === false">
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 font-bold">
+                                        <div class="text-sm leading-5 text-neutral-500">
+                                            <button class="focus:outline-none mx-auto transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" (click)="completeEvent(event.eventId)">Complete</button>
+                                        </div>
+                                    </td>
+                                    </div>
+                                    <div *ngIf="event.isFinished === true">
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 font-bold">
+                                            <div class="text-sm leading-5 text-neutral-500">Finished</div>
+                                        </td>
+                                        </div>
                                     <td
                                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                         <button class="focus:outline-none mx-auto transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" (click)="modalHandler(true, event.eventId)"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400"

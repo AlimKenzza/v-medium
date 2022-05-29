@@ -134,5 +134,17 @@ export class EventService {
     }));
   }
 
+  comleteEvent(eventId: number){
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.put('https://localhost:5001/api/Events/event/complete?eventId=' + eventId, null, {headers:header})
+    .pipe(map(data => {
+      return true;
+    }));
+  }
+
 
 }

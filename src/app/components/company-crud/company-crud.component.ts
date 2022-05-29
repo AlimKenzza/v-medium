@@ -23,6 +23,9 @@ export class CompanyCrudComponent implements OnInit {
   region: number;
   id: number;
   category: number;
+  eventCount: number;
+  uncompletedEvents: number = 0;
+  completedEvents: number;
 
   constructor(private orgService: OrganizationService, private toastr: ToastrService, private eventService: EventService, private router: Router) {
     this.event =  {
@@ -69,6 +72,13 @@ export class CompanyCrudComponent implements OnInit {
       this.results = data;
       this.isError = false;
       console.log(this.results);
+      this.eventCount = this.results.length;
+      for(var i = 0; i<this.results.length; i++) {
+        if(this.results[i].isFinished === false) {
+          this.uncompletedEvents ++;
+        }
+      }
+      this.completedEvents = this.eventCount - this.uncompletedEvents;
       // this.router.navigateByUrl('/myorders');
     }, error => {
       this.isError = true;
@@ -113,6 +123,17 @@ export class CompanyCrudComponent implements OnInit {
 
   selectChangeHandlerCategory (event: any) {
     this.category = event.target.value;
+  }
+
+  completeEvent(eventId: number) {
+    console.log(eventId);
+    this.eventService.comleteEvent(eventId).subscribe(res => {
+      // this.results = this.results.filter(item => item.eventId !== eventId);
+      console.log('Event completed successfully!');
+      Swal.fire('Event completed successfully!', 'Save report about event', 'success').then((result) => {
+        location.reload();
+      });
+ })
   }
 
 }
