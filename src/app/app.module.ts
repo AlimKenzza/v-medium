@@ -26,6 +26,8 @@ import { EventShowerComponent } from './components/event-shower/event-shower.com
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 import { CompanyCrudComponent } from './components/company-crud/company-crud.component';
+import { ListVolunteersComponent } from './components/list-volunteers/list-volunteers.component';
+import { ListOrganizationsComponent } from './components/list-organizations/list-organizations.component';
 
 
 
@@ -47,7 +49,9 @@ import { CompanyCrudComponent } from './components/company-crud/company-crud.com
     EventShowerComponent,
     CreateEventComponent,
     AdminPanelComponent,
-    CompanyCrudComponent
+    CompanyCrudComponent,
+    ListVolunteersComponent,
+    ListOrganizationsComponent
   ],
   imports: [
     BrowserModule,

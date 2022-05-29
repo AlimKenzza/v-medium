@@ -8,6 +8,8 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 import { DatepickerComponent } from './components/datepicker/datepicker/datepicker.component';
 import { EventShowerComponent } from './components/event-shower/event-shower.component';
 import { EventComponent } from './components/event/event.component';
+import { ListOrganizationsComponent } from './components/list-organizations/list-organizations.component';
+import { ListVolunteersComponent } from './components/list-volunteers/list-volunteers.component';
 import { NewsComponent } from './components/news/news.component';
 import { OrganizationSignupComponent } from './components/organization-create/organization-signup/organization-signup.component';
 import { OrganizationProfileComponent } from './components/organization-profile/organization-profile.component';
@@ -29,7 +31,9 @@ const routes: Routes = [
   { path: 'create-event', component: CreateEventComponent},
   { path: 'company-events', component: OrganizationProfileComponent},
   { path: 'admin', component: AdminPanelComponent},
-  { path: 'company-crud', component: CompanyCrudComponent}
+  { path: 'company-crud', component: CompanyCrudComponent},
+  { path: 'volunteers', component: ListVolunteersComponent},
+  { path: 'organizations', component: ListOrganizationsComponent}
 ];
 
 

@@ -56,6 +56,10 @@ export class HeaderComponent implements OnInit {
     
   }
 
+  getRole() :number {
+    return this.localStorage.retrieve('role');
+  }
+
 
 
 }

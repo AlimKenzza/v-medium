@@ -220,9 +220,52 @@
                                                                 formControlName="location">
                                         
                                                         </div>
+
+                                                        <label class="block mt-4 mb-5">
+                                                            <span class="text-gray-700">Region</span>
+                                                            <select (change)="selectChangeHandler($event)" id="region" class="form-select mt-1 block w-full">
+                                                                <option value="0">-</option>
+                                                              <option value="1">Nur-Sultan</option>
+                                                              <option value="2">Almaty</option>
+                                                              <option value="3">Shymkent</option>
+                                                              <option value="4">Pavlodar</option>
+                                                              <option value="5">Almaty's region</option>
+                                                              <option value="6">Aktobe</option>
+                                                              <option value="7">Kostanay</option>
+                                                              <option value="8">Kyzylorda</option>
+                                                              <option value="9">Atyrau</option>
+                                                              <option value="10">West Kazakhstan</option>
+                                                              <option value="11">Akmola</option>
+                                                              <option value="12">Karaganda</option>
+                                                              <option value="13">North Kazakhstan</option>
+                                                              <option value="14">Mangystau</option>
+                                                              <option value="15">Turkestan</option>
+                                                              <option value="16">Zhambyl</option>
+                                                            </select>
+                                                          </label>
+                                                          <label class="block mt-4 mb-5">
+                                                            <span class="text-gray-700">Category</span>
+                                                            <select (change)="selectChangeHandlerCategory($event)" id="category" class="form-select mt-1 block w-full">
+                                                                <option value="0">-</option>
+                                                              <option value="1">Medicine</option>
+                                                              <option value="2">Ecology</option>
+                                                              <option value="3">Social</option>
+                                                              <option value="4">Media</option>
+                                                              <option value="5">Event</option>
+                                                              <option value="6">Animal</option>
+                                                              <option value="7">Emergency</option>
+                                                              <option value="8">Culture</option>
+                                                              <option value="9">Donation</option>
+                                                              <option value="10">Pro_bono</option>
+                                                              <option value="11">Corporate</option>
+                                                              <option value="12">Online</option>
+                                                              <option value="13">Ethno</option>
+                                                              <option value="14">Sport</option>
+                                                            </select>
+                                                          </label>
                                                         <div class="mb-5">
                                                             <label for="email" class="block font-bold text-gray-600">image</label>
-                                                            <input type="text" name="email" class="w-full p-2 border border-gray-300 rounded-l shadow"
+                                                            <input type="text" name="image" class="w-full p-2 border border-gray-300 rounded-l shadow"
                                                                 placeholder="Enter you Image"
                                                                 formControlName="image"
                                                                 >

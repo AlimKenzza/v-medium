@@ -7,6 +7,7 @@ import { AuthService } from '../auth/shared/auth.service';
 import { Organization } from '../components/organization-create/organization-request.payload';
 import { OrganizationRequest } from '../components/organization-create/organization-signup/organization-request.payload';
 import { Result } from '../model/event-result.payload';
+import { VolunteerResponse } from './volunteer-response.payload';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class OrganizationService {
   listingdata:Array<any> = [];
   arrLength : number;
   events: Result[];
+  volunteers: VolunteerResponse[];
+  organizations: OrganizationRequest[];
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private localStorage: LocalStorageService) { }
 
@@ -84,5 +87,43 @@ export class OrganizationService {
 
   getOrganizationById(id: number):Observable<OrganizationRequest> {
     return this.httpClient.get<OrganizationRequest>('https://localhost:5001/api/Organizations?id=' + id);
+  }
+
+  getVolunteersList(): Observable<VolunteerResponse[]> {
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.get('https://localhost:5001/api/Organizations/list/volunteers?Take=10', {observe: 'response', headers: header}).
+    pipe(map(response => {
+      this.arrLength = Object.values(response.body)[1].length;
+      for(let volunteer = 0; volunteer < this.arrLength; volunteer++) {
+     
+        this.volunteers = Object.values(response.body)[1][volunteer];
+        this.listingdata.push(this.volunteers);
+      
+       }
+      return this.listingdata;
+    }));
+  }
+
+  getOrganizationsList(): Observable<OrganizationRequest[]> {
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.get('https://localhost:5001/api/Organizations/list?Skip=0&Take=7', {observe: 'response', headers: header}).
+    pipe(map(response => {
+      this.arrLength = Object.values(response.body)[1].length;
+      for(let company = 0; company < this.arrLength; company++) {
+     
+        this.organizations = Object.values(response.body)[1][company];
+        this.listingdata.push(this.organizations);
+      
+       }
+      return this.listingdata;
+    }));
   }
 }

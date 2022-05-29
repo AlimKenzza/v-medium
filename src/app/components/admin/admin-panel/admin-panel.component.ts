@@ -110,4 +110,8 @@ export class AdminPanelComponent implements OnInit {
 
   }
 
+  selectChangeHandler (event: any) {
+    this.region = event.target.value;
+  }
+
 }

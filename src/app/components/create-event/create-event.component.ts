@@ -15,6 +15,7 @@ export class CreateEventComponent implements OnInit {
   event: EventRequestForCreate;
   eventForm: FormGroup;
   region: number;
+  category: number;
   constructor(private eventService: EventService, private router: Router, private toastr: ToastrService) { 
     this.event =  {
     location: '',
@@ -44,7 +45,7 @@ export class CreateEventComponent implements OnInit {
     this.event.endDate = this.eventForm.get('endDate').value;
     this.event.deadline = this.eventForm.get('startDate').value;
     this.event.image = this.eventForm.get('image').value;
-    this.event.volunteeringCategory = 0;
+    this.event.volunteeringCategory = this.category;
     this.event.region = this.region;
     this.event.location = this.eventForm.get('location').value;
     this.eventService.createEvent(this.event)
@@ -63,5 +64,9 @@ export class CreateEventComponent implements OnInit {
 
   selectChangeHandler (event: any) {
     this.region = event.target.value;
+  }
+
+  selectChangeHandlerCategory (event: any) {
+    this.category = event.target.value;
   }
 }
