@@ -38,13 +38,15 @@ export class ProfileComponent implements OnInit {
     role:number;
     email: string;
     username: string;
+    experience: number;
     description: string;
     categoryObject: Array<any> = [];
     createdDate: string;
+    types: Array<any> = [];
     phone: string;
     categoryNames: Array<any> = [];
+    companyTypeNames: Array<any> = [];
     gender: string;
-    experience: number;
 
   constructor(private fb: FormBuilder, private volunteerService: VolunteerService, private router: Router, private toastr: ToastrService, private localStorage: LocalStorageService) { 
     this.volunteer = {
@@ -75,6 +77,19 @@ export class ProfileComponent implements OnInit {
       { item_id: 13, item_text: 'Ethno' },
       { item_id: 14, item_text: 'Sport' }
   ];
+  this.types = [
+    { item_id: 1, item_text: 'Associatio' },
+    { item_id: 2, item_text: 'Gov' },
+    { item_id: 3, item_text: 'Business' },
+    { item_id: 4, item_text: 'University' },
+    { item_id: 5, item_text: 'Medical' },
+    { item_id: 6, item_text: 'Young' },
+    { item_id: 7, item_text: 'NGOs' },
+    { item_id: 8, item_text: 'Citizens' },
+    { item_id: 9, item_text: 'Media' },
+    { item_id: 10, item_text: 'Social' },
+    { item_id: 11, item_text: 'Other' }
+];
   this.selectedItems = [];
             this.dropdownSettings = {
                 singleSelection: false,
@@ -100,12 +115,17 @@ export class ProfileComponent implements OnInit {
             this.gender = this.localStorage.retrieve('gender');
             this.dateBirth = this.localStorage.retrieve('birthDate').split('T')[0];
             this.experience = this.localStorage.retrieve('experience');
+            this.companyTypeNames = this.getCompanyTypes();
             console.log(this.phone);
   }
   onItemSelect(item: any) {
     console.log('onItemSelect', item);
     console.log(Object.values(item)[0]);
     this.categoriesIds.push(Object.values(item)[0]);
+}
+public onDeSelect(item: any) {
+  console.log(item);
+  this.categoriesIds.pop();
 }
 
 getCategory(id_field: number) : string {
@@ -114,6 +134,9 @@ getCategory(id_field: number) : string {
 }
 onSelectAll(items: any) {
     console.log('onSelectAll', items);
+}
+public onDeSelectAll(items: any) {
+  console.log(items);
 }
 toogleShowFilter() {
     this.ShowFilter = !this.ShowFilter;
@@ -141,6 +164,24 @@ getCategories(): Array<any> {
   return this.categoryNames; 
 }
 
+getCompanyTypes(): Array<any> {
+  var retrievedData = this.localStorage.retrieve("organizationTypes");
+  var companyTypeIds = retrievedData;
+  console.log(companyTypeIds);
+  for(var i = 0; i < this.types.length; i++) {
+    var companyTypeName: string = "";
+    for(var j = 0; j<companyTypeIds.length; j++) {
+      if(this.types[i].item_id === companyTypeIds[j]) {
+        companyTypeName = this.types[i].item_text;
+        this.companyTypeNames.push(companyTypeName);
+      }
+    }
+    
+  }
+  console.log(this.companyTypeNames);
+  return this.companyTypeNames; 
+}
+
 createVolunteer() {
   // console.log(this.region);
   console.log(this.categoriesIds);
@@ -158,7 +199,7 @@ createVolunteer() {
   this.volunteer.description = this.form.get('description').value;
   this.volunteer.sex = this.isMale();
   this.volunteer.birthDate = this.dateBirth;
-  this.volunteer.experience = 0;
+  this.volunteer.experience = this.experience;
   this.volunteerService.createVolunteerProfile(this.volunteer)
       .subscribe(data => {
         this.router.navigate(['/'],
@@ -182,6 +223,10 @@ isMale(): boolean {
 
 selectChangeHandler (event: any) {
   this.region = event.target.value;
+}
+
+selectChangeHandlerExpi(event: any) {
+  this.experience = event.target.value;
 }
 
 handleLimitSelection() {

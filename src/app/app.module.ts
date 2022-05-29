@@ -24,6 +24,8 @@ import { OrganizationProfileComponent } from './components/organization-profile/
 import { EventComponent } from './components/event/event.component';
 import { EventShowerComponent } from './components/event-shower/event-shower.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { CompanyCrudComponent } from './components/company-crud/company-crud.component';
 
 
 
@@ -43,7 +45,9 @@ import { CreateEventComponent } from './components/create-event/create-event.com
     OrganizationProfileComponent,
     EventComponent,
     EventShowerComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    AdminPanelComponent,
+    CompanyCrudComponent
   ],
   imports: [
     BrowserModule,

@@ -14,8 +14,12 @@ import Swal from 'sweetalert2';
 export class CreateEventComponent implements OnInit {
   event: EventRequestForCreate;
   eventForm: FormGroup;
+  region: number;
   constructor(private eventService: EventService, private router: Router, private toastr: ToastrService) { 
     this.event =  {
+    location: '',
+    region: 0,
+    image: '',
     description: '',
     deadline: '',
     endDate: '',
@@ -29,7 +33,9 @@ export class CreateEventComponent implements OnInit {
       eventName: new FormControl('', Validators.required),
       startDate: new FormControl('', [Validators.required, Validators.required]),
       endDate: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)
+      description: new FormControl('', Validators.required),
+      image: new FormControl('', Validators.required),
+      location: new FormControl('', Validators.required)
     });
   }
   createEvent() {
@@ -37,7 +43,10 @@ export class CreateEventComponent implements OnInit {
     this.event.description = this.eventForm.get('description').value;
     this.event.endDate = this.eventForm.get('endDate').value;
     this.event.deadline = this.eventForm.get('startDate').value;
+    this.event.image = this.eventForm.get('image').value;
     this.event.volunteeringCategory = 0;
+    this.event.region = this.region;
+    this.event.location = this.eventForm.get('location').value;
     this.eventService.createEvent(this.event)
       .subscribe(data => {
         this.router.navigate(['/company-events'],
@@ -50,5 +59,9 @@ export class CreateEventComponent implements OnInit {
         console.log(error);
         this.toastr.error('Event creating failed! Please try again');
       });
+  }
+
+  selectChangeHandler (event: any) {
+    this.region = event.target.value;
   }
 }

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login/login.component';
 import { SignupNewComponent } from './auth/signup-new/signup-new.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { CompanyCrudComponent } from './components/company-crud/company-crud.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { DatepickerComponent } from './components/datepicker/datepicker/datepicker.component';
 import { EventShowerComponent } from './components/event-shower/event-shower.component';
@@ -25,7 +27,9 @@ const routes: Routes = [
   { path: 'events', component: EventComponent},
   { path: 'event/:id', component: EventShowerComponent},
   { path: 'create-event', component: CreateEventComponent},
-  { path: 'company-events', component: OrganizationProfileComponent}
+  { path: 'company-events', component: OrganizationProfileComponent},
+  { path: 'admin', component: AdminPanelComponent},
+  { path: 'company-crud', component: CompanyCrudComponent}
 ];
 
 

@@ -30,6 +30,41 @@
               <input class="w-full p-3 text-sm border-gray-200 rounded-lg" placeholder="Event Name" type="text" id="name"
               [formControlName]="'eventName'" />
             </div>
+            <label class="sr-only" for="image">Image Url</label>
+            <input class="w-full p-3 text-sm border-gray-200 rounded-lg" placeholder="Image Url" type="text" id="image"
+            [formControlName]="'image'" />
+
+            <label class="block text-sm">
+              Location
+            </label>
+            <input type="text"
+              class="mt-2 w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              placeholder="Location"
+              formControlName="location"
+               />
+
+            <label class="block mt-4">
+              <span class="text-gray-700">Region</span>
+              <select (change)="selectChangeHandler($event)" id="region" class="form-select mt-1 block w-full">
+                  <option value="0">-</option>
+                <option value="1">Nur-Sultan</option>
+                <option value="2">Almaty</option>
+                <option value="3">Shymkent</option>
+                <option value="4">Pavlodar</option>
+                <option value="5">Almaty's region</option>
+                <option value="6">Aktobe</option>
+                <option value="7">Kostanay</option>
+                <option value="8">Kyzylorda</option>
+                <option value="9">Atyrau</option>
+                <option value="10">West Kazakhstan</option>
+                <option value="11">Akmola</option>
+                <option value="12">Karaganda</option>
+                <option value="13">North Kazakhstan</option>
+                <option value="14">Mangystau</option>
+                <option value="15">Turkestan</option>
+                <option value="16">Zhambyl</option>
+              </select>
+            </label>
   
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>

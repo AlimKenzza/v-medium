@@ -15,3 +15,7 @@ body {
   }
 }
 /*# sourceMappingURL=style.css.map */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  z-index: 1;
+}

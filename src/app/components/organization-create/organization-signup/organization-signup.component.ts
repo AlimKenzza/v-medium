@@ -43,6 +43,7 @@ export class OrganizationSignupComponent implements OnInit {
     dateOrganized: string;
     firstName: string;
     lastName: string;
+    experience: number;
     role:number;
     email: string;
     username: string;
@@ -51,6 +52,7 @@ export class OrganizationSignupComponent implements OnInit {
     createdDate: string;
     phone: string;
     categoryNames: Array<any> = [];
+    companyTypeNames: Array<any> = [];
 
   constructor(private fb: FormBuilder, private volunteerService: VolunteerService, private organizationService: OrganizationService, private router: Router, private toastr: ToastrService, private localStorage: LocalStorageService) { 
     this.organization = {
@@ -132,6 +134,7 @@ export class OrganizationSignupComponent implements OnInit {
             this.createdDate = this.localStorage.retrieve('createdDate').split('T')[0];
             this.phone = this.localStorage.retrieve('phone');
             this.categoryNames = this.getCategories();
+            this.companyTypeNames = this.getCompanyTypes();
             console.log(this.phone);
   }
   onItemSelect(item: any) {
@@ -143,6 +146,23 @@ onItemSelectType(item: any) {
   console.log('onItemSelectType', item);
   console.log(Object.values(item)[0]);
   this.organizationTypeIds.push(Object.values(item)[0]);
+}
+public onDeSelectAll(items: any) {
+  console.log(items);
+}
+
+public onDeSelect(item: any) {
+  console.log(item);
+  this.categoriesIds.pop();
+}
+
+public onDeSelectAllTypes(items: any) {
+  console.log(items);
+}
+
+public onDeSelectType(item: any) {
+  console.log(item);
+  this.organizationTypeIds.pop();
 }
 
 getCategory(id_field: number) : string {
@@ -179,6 +199,24 @@ getCategories(): Array<any> {
   return this.categoryNames; 
 }
 
+getCompanyTypes(): Array<any> {
+  var retrievedData = this.localStorage.retrieve("organizationTypes");
+  var companyTypeIds = retrievedData;
+  console.log(companyTypeIds);
+  for(var i = 0; i < this.types.length; i++) {
+    var companyTypeName: string = "";
+    for(var j = 0; j<companyTypeIds.length; j++) {
+      if(this.types[i].item_id === companyTypeIds[j]) {
+        companyTypeName = this.types[i].item_text;
+        this.companyTypeNames.push(companyTypeName);
+      }
+    }
+    
+  }
+  console.log(this.companyTypeNames);
+  return this.companyTypeNames; 
+}
+
 createOrganization() {
   // console.log(this.region);
   console.log(this.categoriesIds);
@@ -201,14 +239,15 @@ createOrganization() {
   // this.volunteer.volunteeringCategories = this.categoriesIds;
   this.organization.description = this.form.get('description').value;
   this.organization.organizedDate = this.dateOrganized;
-  this.organization.experience = 0;
+  this.organization.experience = this.experience;
+  this.organization.location = this.form.get('location').value;
   this.organization.organizationName = this.form.get('companyName').value;
   this.organization.ceo = this.form.get('ceo').value;
   this.organizationService.createOrganizationProfile(this.organization)
       .subscribe(data => {
         this.router.navigate(['/'],
           { queryParams: { registered: 'true' } });
-          Swal.fire('Youe request for creating organization profile has been accepted!', 'Our Admin will validate your request as soons as possible!', 'success').then((result) => {
+          Swal.fire('Your request for creating organization profile has been accepted!', 'Our Admin will validate your request as soons as possible!', 'success').then((result) => {
             location.reload();
           });
       }
@@ -220,6 +259,10 @@ createOrganization() {
 
 selectChangeHandler (event: any) {
   this.region = event.target.value;
+}
+
+selectChangeHandlerExpi(event: any) {
+  this.experience = event.target.value;
 }
 
 handleLimitSelection() {

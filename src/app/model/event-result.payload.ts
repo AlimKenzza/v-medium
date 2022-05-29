@@ -8,5 +8,8 @@ export interface Result {
     volunteeringCategory: number,
     isFinished: boolean,
     organizationId: number,
-    volunteerIds: any[]
+    volunteerIds: any[],
+    image: string,
+    location: string,
+    region: number
 }

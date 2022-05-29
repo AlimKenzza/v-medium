@@ -81,4 +81,8 @@ export class OrganizationService {
       return this.listingdata;
     }));
   }
+
+  getOrganizationById(id: number):Observable<OrganizationRequest> {
+    return this.httpClient.get<OrganizationRequest>('https://localhost:5001/api/Organizations?id=' + id);
+  }
 }

@@ -1,4 +1,5 @@
-export interface EventRequestForCreate {
+export interface EventUpdate {
+    eventId: number,
     eventName: string,
     description: string,
     deadline: string,

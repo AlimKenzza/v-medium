@@ -6,13 +6,16 @@
     <div class="flex-1 h-full max-w-7xl mx-auto bg-white rounded-lg shadow-xl">
       <div class="flex flex-col md:flex-row">
         <div class="h-32 md:h-auto md:w-1/2">
-          <img class="object-cover h-140 w-96 mt-32" src="../assets/images/sharedgoal.png"
+          <!-- <img class="object-cover h-140 w-96 mt-32" src="../assets/images/sharedgoal.png"
             alt="img" />
             <br>
             <br>
             <br>
             <br>
             <img class="object-cover h-140 w-96" src="../assets/images/working.svg"
+            alt="img" /> -->
+
+            <img class="object-cover h-full w-full" src="../assets/images/Startup.svg"
             alt="img" />
         </div>
         <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
@@ -65,6 +68,8 @@
                       [data]="categories"
                       formControlName="category"
                       [disabled]="disabled"
+                      (onDeSelect)="onDeSelect($event)"
+                      (onDeSelectAll)="onDeSelectAll($event)"
                       (onSelect)="onItemSelect($event)">
                   </ng-multiselect-dropdown>
              </form>
@@ -80,6 +85,8 @@
                   [data]="types"
                   formControlName="organizationType"
                   [disabled]="disabled"
+                  (onDeSelect)="onDeSelectType($event)"
+                  (onDeSelectAll)="onDeSelectAllTypes($event)"
                   (onSelect)="onItemSelectType($event)">
               </ng-multiselect-dropdown>
          </form>
@@ -117,20 +124,20 @@
                 <label class="block mt-4 text-sm">
                   Select Experience in years
                 </label>
-                <select class="form-select mt-2 block w-full">
-                  <option>0</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  <option>11</option>
-                  <option>12</option>
+                <select class="form-select mt-2 block w-full" (change)="selectChangeHandlerExpi($event)" id="experience">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
                 </select>
                 <label class="block mt-4 text-sm">
                   Select Experience in month
@@ -157,8 +164,8 @@
               </button>
   </form>
               <div class="mt-4 text-center">
-                <p class="text-sm">Want to create organization? <a href="/company-signup"
-                    class="text-blue-600 hover:underline"> Create Organization.</a></p>
+                <p class="text-sm">Want to create volunteer profile? <a href="/profile"
+                    class="text-blue-600 hover:underline"> Create Volunteer.</a></p>
               </div>
           </div>
         </div>
