@@ -26,7 +26,8 @@ export class OrganizationSignupComponent implements OnInit {
       location: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       companyName: new FormControl('', Validators.required),
-      ceo: new FormControl('', Validators.required)
+      ceo: new FormControl('', Validators.required),
+      logo: new FormControl('', Validators.required)
     });
     disabled = false;
     ShowFilter = false;
@@ -64,7 +65,8 @@ export class OrganizationSignupComponent implements OnInit {
       description: '',
       ceo: '',
       organizationTypes: [],
-      organizationName: ''
+      organizationName: '',
+      logo: ''
     };
     this.role = this.getRole();
   }
@@ -242,6 +244,7 @@ createOrganization() {
   this.organization.experience = this.experience;
   this.organization.location = this.form.get('location').value;
   this.organization.organizationName = this.form.get('companyName').value;
+  this.organization.logo = this.form.get('logo').value;
   this.organization.ceo = this.form.get('ceo').value;
   this.organizationService.createOrganizationProfile(this.organization)
       .subscribe(data => {

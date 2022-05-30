@@ -7,5 +7,6 @@ export interface Organization {
     organizationTypes: any[],
     experience: number,
     description: string,
-    organizationName: string
+    organizationName: string,
+    logo: string
 }

@@ -26,6 +26,8 @@ export class AdminPanelComponent implements OnInit {
   organization: OrganizationRequest;
   display ='none';
   region: number;
+  organizations: OrganizationRequest[];
+  eventCount: number;
 
   constructor(private eventService: EventService, private router: Router, private organizationService: OrganizationService, private toastr: ToastrService) { 
     this.event =  {
@@ -62,6 +64,7 @@ export class AdminPanelComponent implements OnInit {
       image: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required)
     });
+    this.getOrganizations();
   }
 
   private getEvents() {
@@ -108,6 +111,19 @@ export class AdminPanelComponent implements OnInit {
         this.toastr.error('Event creating failed! Please try again');
       });
 
+  }
+
+  private getOrganizations() {
+    this.organizationService.getOrganizationsList().subscribe(data => {
+      this.organizations = data;
+      this.eventCount = this.organizations.length;
+      this.isError = false;
+      console.log(this.organizations);
+      // this.router.navigateByUrl('/myorders');
+    }, error => {
+      this.isError = true;
+      throwError(error);
+    });
   }
 
   selectChangeHandler (event: any) {

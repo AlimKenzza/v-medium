@@ -257,4 +257,8 @@ getCategoryList() {
   return this.localStorage.retrieve('categories');
 }
 
+getImage() {
+  return this.localStorage.retrieve('image');
+}
+
 }

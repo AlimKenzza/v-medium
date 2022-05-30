@@ -9,5 +9,6 @@ export interface ProfilePayload {
         "phone": string,
         "role": number,
         "status": number,
-        "createdAt": string
+        "createdAt": string,
+        "avatar": string
 }

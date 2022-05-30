@@ -11,4 +11,5 @@ export interface OrganizationRequest {
     login: string;
     phone: string;
     email: string;
+    logo: string;
 }

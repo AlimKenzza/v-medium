@@ -48,6 +48,7 @@ export class HeaderComponent implements OnInit {
       this.localStorage.store('phone', this.profile.phone);
       this.localStorage.store('createdDate', this.profile.createdAt);
       this.localStorage.store('id', this.profile.id);
+      this.localStorage.store('image', this.profile.avatar);
       this.router.navigateByUrl('/profile');
     }, error => {
       throwError(error);
