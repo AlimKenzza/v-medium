@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { AuthService } from '../auth/shared/auth.service';
 import { Organization } from '../components/organization-create/organization-request.payload';
 import { OrganizationRequest } from '../components/organization-create/organization-signup/organization-request.payload';
@@ -126,4 +126,24 @@ export class OrganizationService {
       return this.listingdata;
     }));
   }
+
+  deleteOrganizationById(organizationId: number) {
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.delete('https://localhost:5001/api/Organizations?organiaztionId=' + organizationId, {headers:header}).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+  errorHandler(error:any) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+ }
 }
