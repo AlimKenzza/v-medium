@@ -7,4 +7,5 @@ export interface SignupRequestPayload {
     password: string;
     confirmPassword: string;
     email: string;
+    avatar: string;
 }

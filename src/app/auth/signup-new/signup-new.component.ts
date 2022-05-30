@@ -28,7 +28,8 @@ export class SignupNewComponent implements OnInit {
     phone: '',
     confirmPassword: '',
     login: '',
-    role: 0
+    role: 0,
+    avatar: ''
   };
 
 }
@@ -42,7 +43,8 @@ export class SignupNewComponent implements OnInit {
       phone: new FormControl('', Validators.required),
       login: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
-      role: new FormControl('', Validators.required)
+      role: new FormControl('', Validators.required),
+      avatar: new FormControl('', Validators.required)
     });
   }
 
@@ -55,6 +57,7 @@ export class SignupNewComponent implements OnInit {
     this.signupRequestPayload.role = 0;
     this.signupRequestPayload.confirmPassword = this.signupForm.get('confirmPassword').value;
     this.signupRequestPayload.phone = this.signupForm.get('phone').value;
+    this.signupRequestPayload.avatar = this.signupForm.get('avatar').value;
 
     this.authService.signup(this.signupRequestPayload)
       .subscribe(data => {
