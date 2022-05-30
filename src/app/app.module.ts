@@ -30,6 +30,7 @@ import { ListVolunteersComponent } from './components/list-volunteers/list-volun
 import { ListOrganizationsComponent } from './components/list-organizations/list-organizations.component';
 import { OrganizationCardComponent } from './components/organization-card/organization-card.component';
 import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
+import { CandidateManageComponent } from './components/candidate-manage/candidate-manage.component';
 
 
 
@@ -55,7 +56,8 @@ import { VolunteerCardComponent } from './components/volunteer-card/volunteer-ca
     ListVolunteersComponent,
     ListOrganizationsComponent,
     OrganizationCardComponent,
-    VolunteerCardComponent
+    VolunteerCardComponent,
+    CandidateManageComponent
   ],
   imports: [
     BrowserModule,

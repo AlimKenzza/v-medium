@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login/login.component';
 import { SignupNewComponent } from './auth/signup-new/signup-new.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { CandidateManageComponent } from './components/candidate-manage/candidate-manage.component';
 import { CompanyCrudComponent } from './components/company-crud/company-crud.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { DatepickerComponent } from './components/datepicker/datepicker/datepicker.component';
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: 'volunteers', component: ListVolunteersComponent},
   { path: 'organizations', component: ListOrganizationsComponent},
   { path: 'organization/:id', component: OrganizationCardComponent},
-  { path: 'volunteer/:id', component: VolunteerCardComponent}
+  { path: 'volunteer/:id', component: VolunteerCardComponent},
+  { path: 'company-candidates', component: CandidateManageComponent}
 ];
 
 
