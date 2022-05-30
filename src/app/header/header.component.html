@@ -87,12 +87,12 @@
             <span>Login</span>
           </a> -->
           </div>
-          <a
-            href="#"
-            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
-          >
-            <span>Contact Us</span>
-          </a>
+          <a *ngIf="getRole() === 3"
+          href="/volunteers"
+          class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
+        >
+          <span>Volunteers</span>
+        </a>
           <div class="items-center justify-center lg:inline-flex lg:flex-row">
             <div class="p-10">
               <div *ngIf="isLoggedIn" class="dropdown inline-block relative">

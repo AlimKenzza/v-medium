@@ -3,36 +3,33 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LocalStorageService } from 'ngx-webstorage';
 import { throwError } from 'rxjs';
-import { OrganizationListRequest } from 'src/app/model/organization-getlist.payload';
-import { MembershipService } from 'src/app/services/membership.service';
 import { OrganizationService } from 'src/app/services/organization.service';
+import { VolunteerResponse } from 'src/app/services/volunteer-response.payload';
+import { VolunteerService } from 'src/app/services/volunteer.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-organization-card',
-  templateUrl: './organization-card.component.html',
-  styleUrls: ['./organization-card.component.css']
+  selector: 'app-volunteer-card',
+  templateUrl: './volunteer-card.component.html',
+  styleUrls: ['./volunteer-card.component.css']
 })
-export class OrganizationCardComponent implements OnInit {
-  organization: OrganizationListRequest;
-  companyId: number;
+export class VolunteerCardComponent implements OnInit {
+  volunteerId: number;
+  volunteer: VolunteerResponse;
   categoryNames: Array<any> = [];
-  companyTypeNames: Array<any> = [];
   categoriesMap: Array<any> = [];
-  types: Array<any> = [];
   categories: Array<any> = [];
-  companyTypeIds: Array<any> = [];
   regions: Array<any> = [];
   region: number;
   regionName: string;
-  
-  constructor(private activateRoute: ActivatedRoute, private router: Router, private toastr: ToastrService
-    , private localStorage: LocalStorageService, private organizationService: OrganizationService, private membershipService: MembershipService) {
-      this.companyId = this.activateRoute.snapshot.params.id;
-     }
+
+  constructor(private volunteerService: VolunteerService, private activateRoute: ActivatedRoute, private router: Router, private toastr: ToastrService
+    , private localStorage: LocalStorageService, private companyService: OrganizationService) { 
+      this.volunteerId = this.activateRoute.snapshot.params.id;
+    }
 
   ngOnInit(): void {
-    this.getOrganizationById();
+    this.getVolunteerById();
     this.categoriesMap = [
       { item_id: 1, item_text: 'Medicine' },
       { item_id: 2, item_text: 'Ecology' },
@@ -67,27 +64,13 @@ export class OrganizationCardComponent implements OnInit {
     { item_id: 15, item_text: 'Turkestan' },
     { item_id: 16, item_text: 'Zhambyl' }
 ];
-  this.types = [
-    { item_id: 1, item_text: 'Associatio' },
-    { item_id: 2, item_text: 'Gov' },
-    { item_id: 3, item_text: 'Business' },
-    { item_id: 4, item_text: 'University' },
-    { item_id: 5, item_text: 'Medical' },
-    { item_id: 6, item_text: 'Young' },
-    { item_id: 7, item_text: 'NGOs' },
-    { item_id: 8, item_text: 'Citizens' },
-    { item_id: 9, item_text: 'Media' },
-    { item_id: 10, item_text: 'Social' },
-    { item_id: 11, item_text: 'Other' }
-];
   }
 
-
-  private getOrganizationById() {
-    this.organizationService.getOrganizationById(this.companyId).subscribe(data => {
-      this.organization = data;
+  private getVolunteerById() {
+    this.volunteerService.getVolunteerById(this.volunteerId).subscribe(data => {
+      console.log(data);
+      this.volunteer = data;
       this.categories = data.volunteeringCategories;
-      this.companyTypeIds = data.organizationTypes;
       this.region = data.region;
       for(var i = 0; i < this.categoriesMap.length; i++) {
         var categoryName: string = "";
@@ -97,16 +80,6 @@ export class OrganizationCardComponent implements OnInit {
             this.categoryNames.push(categoryName);
           }
         }    
-      }
-      for(var i = 0; i < this.types.length; i++) {
-        var companyTypeName: string = "";
-        for(var j = 0; j< this.companyTypeIds.length; j++) {
-          if(this.types[i].item_id === this.companyTypeIds[j]) {
-            companyTypeName = this.types[i].item_text;
-            this.companyTypeNames.push(companyTypeName);
-          }
-        }
-        
       }
       for (var i = 0; i < this.regions.length; i++) {
         if(this.regions[i].item_id == this.region) {
@@ -120,13 +93,12 @@ export class OrganizationCardComponent implements OnInit {
     });
   }
 
-  requestMembership() {
-    console.log(this.companyId);
-    this.membershipService.requestMembership(this.companyId)
+  inviteVolunteer() {
+    this.companyService.inviteVolunteer(this.volunteerId)
       .subscribe(data => {
-        this.router.navigate(['/organization/companyId'],
+        this.router.navigate(['/volunteers'],
           { queryParams: { requested: 'true' } });
-          Swal.fire('You have successfully created membership request!', 'Be ready', 'success').then((result) => {
+          Swal.fire('You have successfully invited volunteer!', 'Be in touch', 'success').then((result) => {
             location.reload();
           });
       }
@@ -136,9 +108,4 @@ export class OrganizationCardComponent implements OnInit {
       });
 
   }
-
-  getTotalForValidate() {
-    return this.localStorage.retrieve('total');
-  }
-
 }

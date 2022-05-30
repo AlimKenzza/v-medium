@@ -57,4 +57,13 @@ export class VolunteerService {
       return true;
     }));
   }
+
+  getVolunteerById(id: number):Observable<VolunteerResponse> {
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.get<VolunteerResponse>('https://localhost:5001/api/Volunteers/volunteer/id?volunteerId=' + id, {headers:header});
+  }
 }

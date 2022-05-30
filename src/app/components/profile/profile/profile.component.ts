@@ -253,6 +253,10 @@ getDescription() {
   return this.localStorage.retrieve('description');
 }
 
+getLogo() {
+  return this.localStorage.retrieve('logo');
+}
+
 getCategoryList() {
   return this.localStorage.retrieve('categories');
 }

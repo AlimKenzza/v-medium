@@ -19,12 +19,13 @@
                 <div *ngFor="let type of companyTypeNames;" class="flex flex-row ml-4">
                 <button class="bg-indigo-800 mb-4 w-24 rounded-full px-4 py-2 font-ligth text-white flex">{{type}}</button></div></div>
         <div class="flex justify-center">
+          <div *ngIf="getTotalForValidate() === 0">
           <button type="button" (click)="requestMembership()"  class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg items-center">Join Organization</button>
-     
+        </div>
         </div>
       </div>
       <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+        <img class="object-cover object-center rounded" alt="hero" src="{{organization.logo}}">
       </div>
     </div>
   </section>

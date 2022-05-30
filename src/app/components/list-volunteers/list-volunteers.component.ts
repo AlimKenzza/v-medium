@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { OrganizationService } from 'src/app/services/organization.service';
 import { VolunteerResponse } from 'src/app/services/volunteer-response.payload';
@@ -13,7 +14,7 @@ export class ListVolunteersComponent implements OnInit {
   volunteers: VolunteerResponse[];
   isError: boolean;
 
-  constructor(private orgService: OrganizationService) { }
+  constructor(private orgService: OrganizationService, private router: Router) { }
 
   ngOnInit(): void {
     this.getVolunteers();
@@ -29,6 +30,10 @@ export class ListVolunteersComponent implements OnInit {
       this.isError = true;
       throwError(error);
     });
+  }
+
+  goToVolunteer(id: number): void {
+    this.router.navigateByUrl('/volunteer/' + id);
   }
 
 }

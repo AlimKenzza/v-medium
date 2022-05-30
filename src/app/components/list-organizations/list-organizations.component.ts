@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'ngx-webstorage';
 import { throwError } from 'rxjs';
 import { OrganizationListRequest } from 'src/app/model/organization-getlist.payload';
 import { OrganizationService } from 'src/app/services/organization.service';
@@ -13,7 +14,7 @@ import { OrganizationRequest } from '../organization-create/organization-signup/
 export class ListOrganizationsComponent implements OnInit {
   organizations: OrganizationListRequest[];
   isError: boolean;
-  constructor(private orgService: OrganizationService, private router: Router) { }
+  constructor(private orgService: OrganizationService, private router: Router, private localStorage: LocalStorageService) { }
 
   ngOnInit(): void {
     this.getOrganizations();
@@ -34,5 +35,7 @@ export class ListOrganizationsComponent implements OnInit {
   goToOrganization(id: number): void {
     this.router.navigateByUrl('/organization/' + id);
   }
+
+
 
 }

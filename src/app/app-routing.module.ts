@@ -15,6 +15,7 @@ import { OrganizationCardComponent } from './components/organization-card/organi
 import { OrganizationSignupComponent } from './components/organization-create/organization-signup/organization-signup.component';
 import { OrganizationProfileComponent } from './components/organization-profile/organization-profile.component';
 import { ProfileComponent } from './components/profile/profile/profile.component';
+import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
 import { VolunteerProfileComponent } from './components/volunteer-profile/volunteer-profile.component';
 import { HomeComponent } from './home/home.component';
 
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'company-crud', component: CompanyCrudComponent},
   { path: 'volunteers', component: ListVolunteersComponent},
   { path: 'organizations', component: ListOrganizationsComponent},
-  { path: 'organization/:id', component: OrganizationCardComponent}
+  { path: 'organization/:id', component: OrganizationCardComponent},
+  { path: 'volunteer/:id', component: VolunteerCardComponent}
 ];
 
 

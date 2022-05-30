@@ -29,6 +29,7 @@ import { CompanyCrudComponent } from './components/company-crud/company-crud.com
 import { ListVolunteersComponent } from './components/list-volunteers/list-volunteers.component';
 import { ListOrganizationsComponent } from './components/list-organizations/list-organizations.component';
 import { OrganizationCardComponent } from './components/organization-card/organization-card.component';
+import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
 
 
 
@@ -53,7 +54,8 @@ import { OrganizationCardComponent } from './components/organization-card/organi
     CompanyCrudComponent,
     ListVolunteersComponent,
     ListOrganizationsComponent,
-    OrganizationCardComponent
+    OrganizationCardComponent,
+    VolunteerCardComponent
   ],
   imports: [
     BrowserModule,

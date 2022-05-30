@@ -62,6 +62,7 @@ export class OrganizationService {
       this.localStorage.store('organizationTypes', data.organizationTypes);
       this.localStorage.store('ceo', data.ceo);
       this.localStorage.store('location', data.location);
+      this.localStorage.store('logo', data.logo);
       return true;
     }));
   }
@@ -96,7 +97,7 @@ export class OrganizationService {
       "Bearer " + 
        this.authService.getJwtToken()
     );
-    return this.httpClient.get('https://localhost:5001/api/Organizations/list/volunteers?Take=10', {observe: 'response', headers: header}).
+    return this.httpClient.get('https://localhost:5001/api/Organizations/list/volunteers?Take=11', {observe: 'response', headers: header}).
     pipe(map(response => {
       this.arrLength = Object.values(response.body)[1].length;
       for(let volunteer = 0; volunteer < this.arrLength; volunteer++) {
@@ -147,4 +148,18 @@ export class OrganizationService {
     }
     return throwError(errorMessage);
  }
+
+ inviteVolunteer(volunteerId: number){
+  let header = new HttpHeaders().set(
+    "Authorization",
+    "Bearer " + 
+     this.authService.getJwtToken()
+  );
+  return this.httpClient.post('https://localhost:5001/api/Membership/organization/invite-volunteer?volunteerId=' + volunteerId , null, {headers:header})
+  .pipe(map(data => {
+    return true;
+  }));
+}
+
+ 
 }
