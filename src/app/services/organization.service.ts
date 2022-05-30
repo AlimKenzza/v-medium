@@ -7,6 +7,7 @@ import { AuthService } from '../auth/shared/auth.service';
 import { Organization } from '../components/organization-create/organization-request.payload';
 import { OrganizationRequest } from '../components/organization-create/organization-signup/organization-request.payload';
 import { Result } from '../model/event-result.payload';
+import { OrganizationListRequest } from '../model/organization-getlist.payload';
 import { VolunteerResponse } from './volunteer-response.payload';
 
 @Injectable({
@@ -17,7 +18,7 @@ export class OrganizationService {
   arrLength : number;
   events: Result[];
   volunteers: VolunteerResponse[];
-  organizations: OrganizationRequest[];
+  organizations: OrganizationListRequest[];
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private localStorage: LocalStorageService) { }
 
@@ -85,8 +86,8 @@ export class OrganizationService {
     }));
   }
 
-  getOrganizationById(id: number):Observable<OrganizationRequest> {
-    return this.httpClient.get<OrganizationRequest>('https://localhost:5001/api/Organizations?id=' + id);
+  getOrganizationById(id: number):Observable<OrganizationListRequest> {
+    return this.httpClient.get<OrganizationListRequest>('https://localhost:5001/api/Organizations?id=' + id);
   }
 
   getVolunteersList(): Observable<VolunteerResponse[]> {
@@ -108,7 +109,7 @@ export class OrganizationService {
     }));
   }
 
-  getOrganizationsList(): Observable<OrganizationRequest[]> {
+  getOrganizationsList(): Observable<OrganizationListRequest[]> {
     let header = new HttpHeaders().set(
       "Authorization",
       "Bearer " + 

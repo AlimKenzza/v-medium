@@ -28,6 +28,7 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
 import { CompanyCrudComponent } from './components/company-crud/company-crud.component';
 import { ListVolunteersComponent } from './components/list-volunteers/list-volunteers.component';
 import { ListOrganizationsComponent } from './components/list-organizations/list-organizations.component';
+import { OrganizationCardComponent } from './components/organization-card/organization-card.component';
 
 
 
@@ -51,7 +52,8 @@ import { ListOrganizationsComponent } from './components/list-organizations/list
     AdminPanelComponent,
     CompanyCrudComponent,
     ListVolunteersComponent,
-    ListOrganizationsComponent
+    ListOrganizationsComponent,
+    OrganizationCardComponent
   ],
   imports: [
     BrowserModule,

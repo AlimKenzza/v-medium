@@ -11,6 +11,7 @@ import { EventComponent } from './components/event/event.component';
 import { ListOrganizationsComponent } from './components/list-organizations/list-organizations.component';
 import { ListVolunteersComponent } from './components/list-volunteers/list-volunteers.component';
 import { NewsComponent } from './components/news/news.component';
+import { OrganizationCardComponent } from './components/organization-card/organization-card.component';
 import { OrganizationSignupComponent } from './components/organization-create/organization-signup/organization-signup.component';
 import { OrganizationProfileComponent } from './components/organization-profile/organization-profile.component';
 import { ProfileComponent } from './components/profile/profile/profile.component';
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminPanelComponent},
   { path: 'company-crud', component: CompanyCrudComponent},
   { path: 'volunteers', component: ListVolunteersComponent},
-  { path: 'organizations', component: ListOrganizationsComponent}
+  { path: 'organizations', component: ListOrganizationsComponent},
+  { path: 'organization/:id', component: OrganizationCardComponent}
 ];
 
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
+import { OrganizationListRequest } from 'src/app/model/organization-getlist.payload';
 import { OrganizationService } from 'src/app/services/organization.service';
 import { OrganizationRequest } from '../organization-create/organization-signup/organization-request.payload';
 
@@ -9,9 +11,9 @@ import { OrganizationRequest } from '../organization-create/organization-signup/
   styleUrls: ['./list-organizations.component.css']
 })
 export class ListOrganizationsComponent implements OnInit {
-  organizations: OrganizationRequest[];
+  organizations: OrganizationListRequest[];
   isError: boolean;
-  constructor(private orgService: OrganizationService) { }
+  constructor(private orgService: OrganizationService, private router: Router) { }
 
   ngOnInit(): void {
     this.getOrganizations();
@@ -27,6 +29,10 @@ export class ListOrganizationsComponent implements OnInit {
       this.isError = true;
       throwError(error);
     });
+  }
+
+  goToOrganization(id: number): void {
+    this.router.navigateByUrl('/organization/' + id);
   }
 
 }
