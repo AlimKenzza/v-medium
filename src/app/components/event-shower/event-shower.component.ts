@@ -60,7 +60,7 @@ export class EventShowerComponent implements OnInit {
   joinToEvent() {
     this.eventService.joinToEvent(this.eventId)
       .subscribe(data => {
-        this.router.navigate(['/profile'],
+        this.router.navigate(['/'],
           { queryParams: { registered: 'true' } });
           Swal.fire('You have successfully joined the event!', 'Be ready', 'success').then((result) => {
             location.reload();

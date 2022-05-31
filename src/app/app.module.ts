@@ -32,6 +32,7 @@ import { OrganizationCardComponent } from './components/organization-card/organi
 import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
 import { CandidateManageComponent } from './components/candidate-manage/candidate-manage.component';
 import { OrganizationMembersComponent } from './components/organization-members/organization-members.component';
+import { InvitationsComponent } from './components/invitations/invitations.component';
 
 
 
@@ -59,7 +60,8 @@ import { OrganizationMembersComponent } from './components/organization-members/
     OrganizationCardComponent,
     VolunteerCardComponent,
     CandidateManageComponent,
-    OrganizationMembersComponent
+    OrganizationMembersComponent,
+    InvitationsComponent
   ],
   imports: [
     BrowserModule,

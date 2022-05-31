@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LocalStorageService } from 'ngx-webstorage';
+import { HeaderComponent } from 'src/app/header/header.component';
 import { VolunteerService } from 'src/app/services/volunteer.service';
 import Swal from 'sweetalert2';
 import { Volunteer } from './volunteer-request.payload';
@@ -48,7 +49,8 @@ export class ProfileComponent implements OnInit {
     companyTypeNames: Array<any> = [];
     gender: string;
 
-  constructor(private fb: FormBuilder, private volunteerService: VolunteerService, private router: Router, private toastr: ToastrService, private localStorage: LocalStorageService) { 
+  constructor(private fb: FormBuilder, private volunteerService: VolunteerService, private router: Router, private toastr: ToastrService, private localStorage: LocalStorageService
+    ) { 
     this.volunteer = {
       birthDate: '',
       volunteeringCategories: [],
@@ -202,12 +204,12 @@ createVolunteer() {
   this.volunteer.experience = this.experience;
   this.volunteerService.createVolunteerProfile(this.volunteer)
       .subscribe(data => {
-        this.router.navigate(['/login'],
-          { queryParams: { registered: 'true' } });
+        this.router.navigate(['/login']);
+        //   { queryParams: { registered: 'true' } });
           Swal.fire('You have successfully created a volunteer profile!', 'Explore and apply to events!', 'success').then((result) => {
+            // this.header.logout();
             location.reload();
           });
-          this.localStorage.clear;
       }
       , error => {
         console.log(error);

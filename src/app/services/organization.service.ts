@@ -97,7 +97,7 @@ export class OrganizationService {
       "Bearer " + 
        this.authService.getJwtToken()
     );
-    return this.httpClient.get('https://localhost:5001/api/Organizations/list/volunteers?Take=11', {observe: 'response', headers: header}).
+    return this.httpClient.get('https://localhost:5001/api/Organizations/list/volunteers?Take=15', {observe: 'response', headers: header}).
     pipe(map(response => {
       this.arrLength = Object.values(response.body)[1].length;
       for(let volunteer = 0; volunteer < this.arrLength; volunteer++) {

@@ -36,7 +36,17 @@ export class CandidateManageComponent implements OnInit {
   }
 
   reject(volunteerId: number) {
-
+    this.memberService.rejectVolunteer(volunteerId)
+    .subscribe(data => {
+      this.router.navigate(['/company-candidates']);
+        Swal.fire('Candidate has been rejected successfully!', 'Check out new candidates', 'success').then((result) => {
+          location.reload();
+        });
+    }
+    , error => {
+      console.log(error);
+      this.toastr.error('Request failed! Please try again');
+    });
   }
 
   accept(volunteerId: number) {
