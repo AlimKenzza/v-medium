@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
 import { MembershipService } from 'src/app/services/membership.service';
 import { VolunteerResponse } from 'src/app/services/volunteer-response.payload';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-candidate-manage',
@@ -13,7 +16,7 @@ export class CandidateManageComponent implements OnInit {
   isError: boolean;
   candidateCount: number;
 
-  constructor(private memberService: MembershipService) { }
+  constructor(private memberService: MembershipService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getCandidates();
@@ -33,7 +36,21 @@ export class CandidateManageComponent implements OnInit {
   }
 
   reject(volunteerId: number) {
-    
+
+  }
+
+  accept(volunteerId: number) {
+    this.memberService.acceptVolunteer(volunteerId)
+    .subscribe(data => {
+      this.router.navigate(['/company-candidates']);
+        Swal.fire('Candidate has been accepted successfully!', 'Check out your members', 'success').then((result) => {
+          location.reload();
+        });
+    }
+    , error => {
+      console.log(error);
+      this.toastr.error('Request failed! Please try again');
+    });
   }
 
 }

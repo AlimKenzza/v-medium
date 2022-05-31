@@ -202,11 +202,12 @@ createVolunteer() {
   this.volunteer.experience = this.experience;
   this.volunteerService.createVolunteerProfile(this.volunteer)
       .subscribe(data => {
-        this.router.navigate(['/'],
+        this.router.navigate(['/login'],
           { queryParams: { registered: 'true' } });
           Swal.fire('You have successfully created a volunteer profile!', 'Explore and apply to events!', 'success').then((result) => {
             location.reload();
           });
+          this.localStorage.clear;
       }
       , error => {
         console.log(error);

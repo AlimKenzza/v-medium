@@ -59,3 +59,66 @@
       </div>
     </div>
   </section>
+
+
+<div *ngIf="getRole() === 3" >
+  <h1 class="text-center font-bold text-4xl	">CURRENT MEMBERS OF THE EVENT</h1><br>
+  <div class="overflow-x-auto w-full ">
+    <table class="table w-full">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>
+            <label>
+              <input type="checkbox" class="checkbox" />
+            </label>
+          </th>
+          <th>FullName</th>
+          <th>BirthDate</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Experience</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- row 1 -->
+        <tr *ngFor="let volunteer of volunteers">
+          <th>
+            <label>
+              <input type="checkbox" class="checkbox" />
+            </label>
+          </th>
+          <td>
+            <div class="flex items-center space-x-3">
+              <div class="avatar">
+                <div class="mask mask-squircle w-12 h-12">
+                  <img src="{{volunteer.avatar}}" alt="Avatar Tailwind CSS Component" />
+                </div>
+              </div>
+              <div>
+                <div class="font-bold">{{volunteer.firstName}} {{volunteer.lastName}}</div>
+                <!-- <div class="text-sm opacity-50"></div> -->
+              </div>
+            </div>
+          </td>
+          <td>
+           {{volunteer.birthDate.split('T')[0]}}
+            <br>
+            <!-- <span class="badge badge-ghost badge-sm">Desktop Support Technician</span> -->
+          </td>
+          <td>{{volunteer.phone}}</td>
+          <td>{{volunteer.email}}</td>
+          <td>{{volunteer.experience}}</td>
+          <th>
+            <button class="btn btn-ghost btn-xs">details</button>
+          </th>
+        </tr>
+      </tbody>
+<br>
+<br>
+   
+      
+    </table>
+  </div>
+</div>

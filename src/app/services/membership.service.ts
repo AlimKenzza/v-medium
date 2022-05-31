@@ -58,4 +58,31 @@ export class MembershipService {
       return this.listingdata;
     }));
   }
+
+  acceptVolunteer(volunteerId: number){
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.put('https://localhost:5001/api/Membership/organization/changeRequest?VolunteerId=' + volunteerId + '&MembershipStatus=2', null, {headers:header})
+    .pipe(map(data => {
+      return true;
+    }));
+  }
+
+  
+  kickVolunteer(volunteerId: number){
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.put('https://localhost:5001/api/Membership/organization/changeRequest?VolunteerId=' + volunteerId + '&MembershipStatus=4', null, {headers:header})
+    .pipe(map(data => {
+      return true;
+    }));
+  }
+
+
 }

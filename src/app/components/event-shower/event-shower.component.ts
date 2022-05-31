@@ -6,6 +6,7 @@ import { throwError } from 'rxjs';
 import { Result } from 'src/app/model/event-result.payload';
 import { EventService } from 'src/app/services/event.service';
 import { OrganizationService } from 'src/app/services/organization.service';
+import { VolunteerResponse } from 'src/app/services/volunteer-response.payload';
 import Swal from 'sweetalert2';
 import { OrganizationRequest } from '../organization-create/organization-signup/organization-request.payload';
 
@@ -22,6 +23,7 @@ export class EventShowerComponent implements OnInit {
   volunteerIds: Array<any> = [];
   organization: OrganizationRequest;
   isJoinedVolunter: number;
+  volunteers: VolunteerResponse[];
 
   constructor(private activateRoute: ActivatedRoute, private router: Router, private eventService: EventService, private toastr: ToastrService
     , private localStorage: LocalStorageService, private organizationService: OrganizationService) {
@@ -30,6 +32,7 @@ export class EventShowerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEventsById();
+    this.getMembersByEventId();
     // this.volunteerId = this.eventService.getVolunteerId();
     // this.volunteerIds = this.eventService.getVolunteerIds();
     // this.isJoinedVolunter = this.isJoined();
@@ -92,6 +95,18 @@ export class EventShowerComponent implements OnInit {
       throwError(error);
     });
     return this.organization;
+  }
+
+  getRole() :number {
+    return this.localStorage.retrieve('role');
+  }
+  
+  private getMembersByEventId() {
+    this.eventService.getAllEventMembersForOrganization(this.eventId).subscribe(data => {
+      this.volunteers = data;
+    }, error => {
+      throwError(error);
+    });
   }
 
 }

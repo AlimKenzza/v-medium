@@ -7,6 +7,7 @@ import { AuthService } from '../auth/shared/auth.service';
 import { EventRequestForCreate } from '../model/event-create-request.payload';
 import { Result } from '../model/event-result.payload';
 import { EventUpdate } from '../model/event-update-request.payload';
+import { VolunteerResponse } from './volunteer-response.payload';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class EventService {
   listingdata:Array<any> = [];
   arrLength : number;
   events: Result[];
+  volunteers: VolunteerResponse[];
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private localStorage: LocalStorageService) {
    }
@@ -124,6 +126,24 @@ export class EventService {
     return this.httpClient.put('https://localhost:5001/api/Events/event/complete?eventId=' + eventId, null, {headers:header})
     .pipe(map(data => {
       return true;
+    }));
+  }
+
+
+  getAllEventMembersForOrganization(eventId: number): Observable<VolunteerResponse[]> {
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.get('https://localhost:5001/api/Events/event/members?EventId=' + eventId + '&Skip=0&Take=7', {observe: 'response', headers: header}).
+    pipe(map(response => {
+      this.arrLength = Object.values(response.body)[1].length;
+      for(let volunteer = 0; volunteer < this.arrLength; volunteer++) {
+        this.volunteers = Object.values(response.body)[1][volunteer];
+        this.listingdata.push(this.volunteers);
+       }
+      return this.listingdata;
     }));
   }
 
