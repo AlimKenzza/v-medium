@@ -61,7 +61,18 @@ export class InvitationsComponent implements OnInit {
   }
 
   reject(volunteerId: number) {
-
+    console.log(volunteerId);
+    this.memberService.rejectOrganization(volunteerId)
+    .subscribe(data => {
+      this.router.navigate(['/invitations']);
+        Swal.fire('Rejected organization successfully!', 'Be ready', 'success').then((result) => {
+          location.reload();
+        });
+    }
+    , error => {
+      console.log(error);
+      this.toastr.error('Request failed! Please try again');
+    });
   }
 
 }

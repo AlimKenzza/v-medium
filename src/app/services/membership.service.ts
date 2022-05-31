@@ -97,6 +97,17 @@ export class MembershipService {
     }));
   }
 
+  rejectOrganization(volunteerId: number){
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.put('https://localhost:5001/api/Membership/volunteer/answer?VolunteerId=' + volunteerId + '&MembershipStatus=7', null, {headers:header})
+    .pipe(map(data => {
+      return true;
+    }));
+  }
   
   kickVolunteer(volunteerId: number){
     let header = new HttpHeaders().set(
