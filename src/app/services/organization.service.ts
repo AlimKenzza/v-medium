@@ -135,7 +135,7 @@ export class OrganizationService {
       "Bearer " + 
        this.authService.getJwtToken()
     );
-    return this.httpClient.delete('https://localhost:5001/api/Organizations?organiaztionId=' + organizationId, {headers:header}).pipe(
+    return this.httpClient.delete('https://localhost:5001/api/Organizations?organizationId=' + organizationId, {headers:header}).pipe(
       catchError(this.errorHandler)
     );
   }
@@ -160,6 +160,4 @@ export class OrganizationService {
     return true;
   }));
 }
-
- 
 }

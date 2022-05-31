@@ -23,7 +23,7 @@ export class MembershipService {
       "Bearer " + 
        this.authService.getJwtToken()
     );
-    return this.httpClient.post('https://localhost:5001/api/Membership/request-membership' , {organizationId:organizationId}, {headers:header})
+    return this.httpClient.post('https://localhost:5001/api/Membership/volunteer/request-membership' , {organizationId:organizationId}, {headers:header})
     .pipe(map(data => {
       return true;
     }));
@@ -52,10 +52,8 @@ export class MembershipService {
     pipe(map(response => {
       this.arrLength = Object.values(response.body)[1].length;
       for(let volunteer = 0; volunteer < this.arrLength; volunteer++) {
-     
         this.volunteers = Object.values(response.body)[1][volunteer];
         this.listingdata.push(this.volunteers);
-      
        }
       return this.listingdata;
     }));

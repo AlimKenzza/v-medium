@@ -124,7 +124,7 @@ export class OrganizationCardComponent implements OnInit {
     console.log(this.companyId);
     this.membershipService.requestMembership(this.companyId)
       .subscribe(data => {
-        this.router.navigate(['/organization/companyId'],
+        this.router.navigate(['/'],
           { queryParams: { requested: 'true' } });
           Swal.fire('You have successfully created membership request!', 'Be ready', 'success').then((result) => {
             location.reload();

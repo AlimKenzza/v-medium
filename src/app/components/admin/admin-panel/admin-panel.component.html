@@ -120,109 +120,13 @@
                                                 stroke-width="2"
                                                 d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                         </svg></button>
-                                        <div class="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50 ml-auto" id="modal" [ngStyle]="{'display':display}" role="dialog"
-                                        >
-                                            <div class="max-w-2xl p-6 bg-white">
-                                                <div class="flex items-center justify-between">
-                                                    <h3 class="text-2xl">Model Title</h3>
-                                                    <button class="focus:outline-none mx-auto transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" (click)="modalHandler(false)"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                                                        stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                    </svg></button>
-                                               
-                                                </div>
-                                                <div class="mt-4">
-                                                    <form [formGroup]="eventForm" (ngSubmit)="updateEvent(event.eventId)">
-                                                       
-                                                        <div class="mb-5">
-                                                            <label for="name" class="block font-bold text-gray-600">Event Name</label>
-                                                            <input type="text" name="name"
-                                                                class="w-full p-2 border border-gray-300 rounded-l shadow focus:outline-none focus:ring-2 focus:ring-purple-600"
-                                                                placeholder="Enter you name"
-                                                                formControlName="eventName">
-                                                        </div>
-                                                        <div class="mb-5">
-                                                            <label for="description" class="block font-bold text-gray-600">Description</label>
-                                                            <input type="text" name="description" class="w-full p-2 border border-gray-300 rounded-l shadow"
-                                                                placeholder="Enter you Description"
-                                                                formControlName="description">
-                                                        </div>
-                                                        <div class="mb-5">
-                                                            <label for="email" class="block font-bold text-gray-600">Location</label>
-                                                            <input type="text" name="email" class="w-full p-2 border border-gray-300 rounded-l shadow"
-                                                                placeholder="Enter you Location"
-                                                                formControlName="location">
-                                        
-                                                        </div>
-                                                        <label class="block mt-4">
-                                                            <span class="text-gray-700">Region</span>
-                                                            <select (change)="selectChangeHandler($event)" id="region" class="form-select mt-1 block w-full">
-                                                                <option value="0">-</option>
-                                                              <option value="1">Nur-Sultan</option>
-                                                              <option value="2">Almaty</option>
-                                                              <option value="3">Shymkent</option>
-                                                              <option value="4">Pavlodar</option>
-                                                              <option value="5">Almaty's region</option>
-                                                              <option value="6">Aktobe</option>
-                                                              <option value="7">Kostanay</option>
-                                                              <option value="8">Kyzylorda</option>
-                                                              <option value="9">Atyrau</option>
-                                                              <option value="10">West Kazakhstan</option>
-                                                              <option value="11">Akmola</option>
-                                                              <option value="12">Karaganda</option>
-                                                              <option value="13">North Kazakhstan</option>
-                                                              <option value="14">Mangystau</option>
-                                                              <option value="15">Turkestan</option>
-                                                              <option value="16">Zhambyl</option>
-                                                            </select>
-                                                          </label>
-                                                        <div class="mb-5">
-                                                            <label for="email" class="block font-bold text-gray-600">image</label>
-                                                            <input type="text" name="email" class="w-full p-2 border border-gray-300 rounded-l shadow"
-                                                                placeholder="Enter you Image"
-                                                                formControlName="image"
-                                                                >
-                                        
-                                                        </div>
-                                                        <div class="mb-5">
-                                                        
-                                                              <label class="sr-only" for="email">Start Date</label>
-                                                              <input
-                                                                class="w-full p-3 text-sm border-gray-200 rounded-lg"
-                                                                placeholder="Start Date"
-                                                                type="date"
-                                               
-                                                                formControlName="startDate"
-                                                                
-                                                                
-                                                              />
-                                                            </div>
-                                                
-                                                            <div class="mb-5">
-                                                              <label class="sr-only" for="endDate">EndDate</label>
-                                                              <input
-                                                                class="w-full p-3 text-sm border-gray-200 rounded-lg"
-                                                                placeholder="End Date"
-                                                                type="date"
-                                                         
-                                                                formControlName="endDate"
-                                                          
-                                                              />
-                                                            </div>
-                                                    
-                                                        <button type="submit"
-                                                            class="block w-full p-3 font-bold text-white bg-blue-500 rounded-l">Submit</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
                                     </td>
                                         
                                    
                                     <td
                                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                                        <button type="button" (click)="deleteEventById(event.eventId)" class="btn btn-danger">
+                                        <button type="button" (click)="deleteOrganizationById(organization.organizationId)" class="btn btn-danger">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round"
