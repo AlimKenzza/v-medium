@@ -18,6 +18,7 @@ import { OrganizationSignupComponent } from './components/organization-create/or
 import { OrganizationMembersComponent } from './components/organization-members/organization-members.component';
 import { OrganizationProfileComponent } from './components/organization-profile/organization-profile.component';
 import { ProfileComponent } from './components/profile/profile/profile.component';
+import { TestMapComponent } from './components/test-map/test-map.component';
 import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
 import { VolunteerProfileComponent } from './components/volunteer-profile/volunteer-profile.component';
 import { HomeComponent } from './home/home.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminPanelComponent},
   { path: 'company-crud', component: CompanyCrudComponent},
   { path: 'volunteers', component: ListVolunteersComponent},
+  { path: 'test-map', component: TestMapComponent},
   { path: 'organizations', component: ListOrganizationsComponent},
   { path: 'organization/:id', component: OrganizationCardComponent},
   { path: 'volunteer/:id', component: VolunteerCardComponent},

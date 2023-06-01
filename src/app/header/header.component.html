@@ -32,9 +32,9 @@
         >
       </a>
       <div class="flex flex-col">
-      <h1 class="text-indigo-600 text-2xl">V-MEDIUM</h1>
-      <h1 class="text-indigo-600 text-2xl">VOLUNTEER</h1>
-      <h1 class="text-indigo-600 text-2xl">PLATFORM</h1>
+      <h1 class="text-indigo-600 text-2xl">{{'header.title1' | translate}}</h1>
+      <h1 class="text-indigo-600 text-2xl">{{'header.title2' | translate}}</h1>
+      <h1 class="text-indigo-600 text-2xl">{{'header.title3' | translate}}</h1>
      </div>
       <button
         class="text-white inline-flex p-3 hover:bg-gray-800 rounded lg:hidden ml-auto hover:text-white outline-none nav-toggler"
@@ -53,25 +53,28 @@
             href="/organizations"
             class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
           >
-            <span>Organizations</span>
+            <span>{{'header.navbar1' | translate}}</span>
           </a>
           <a
             href="../news"
             class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
           >
-            <span>News</span>
+            <span>{{'header.navbar2' | translate}}</span>
           </a>
+        
+          
+           
           <a
             href="/events"
             class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
           >
-            <span>Events</span>
+            <span>{{'header.navbar3' | translate}}</span>
           </a>
           <a *ngIf="getRole() === 3"
           href="/company-crud"
           class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
         >
-          <span>Manage Events</span>
+          <span>{{'header.manage' | translate}}</span>
         </a>
           <div *ngIf="!isLoggedIn">
           <!-- <a
@@ -91,21 +94,34 @@
           href="/volunteers"
           class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
         >
-          <span>Volunteers</span>
+          <span>{{'header.vol' | translate}}</span>
         </a>
         <a *ngIf="getRole() === 3"
           href="/company-candidates"
           class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
         >
-          <span>Candidates</span>
+          <span>{{'header.cand' | translate}}</span>
         </a>
 
         <a *ngIf="getRole() === 2"
           href="/invitations"
           class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-indigo-600 items-center justify-center hover:bg-gray-800 hover:text-white"
         >
-          <span>Invitations</span>
+          <span>{{'header.navbar4' | translate}}</span>
         </a>
+
+        <div class="inline-block relative">
+          <select (change)="selectLang($event.target.value)" class="block appearance-none w-full bg-white border border-gray-300 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline">
+            <option *ngFor="let item of supportLanguages" [value]="item">{{ item }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M7 7l3-3 3 3m0 6l-3 3-3-3" />
+            </svg>
+          </div>
+        </div>
+
+        
           <div class="items-center justify-center lg:inline-flex lg:flex-row">
             <div class="p-10">
               <div *ngIf="isLoggedIn" class="dropdown inline-block relative">
@@ -118,9 +134,9 @@
                 </button>
                 <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
                   <li class=""><button class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                      (click)="getProfile()">Profile</button></li>
+                      (click)="getProfile()">{{'header.profile' | translate}}</button></li>
                   <li class=""><button class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap "
-                      (click)="logout()">Logout</button></li>
+                      (click)="logout()">{{'header.logout' | translate}}</button></li>
                 </ul>
               </div>
             </div>        

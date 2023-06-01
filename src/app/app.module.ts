@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login/login.component';
 import { NewsComponent } from './components/news/news.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
@@ -33,6 +33,11 @@ import { VolunteerCardComponent } from './components/volunteer-card/volunteer-ca
 import { CandidateManageComponent } from './components/candidate-manage/candidate-manage.component';
 import { OrganizationMembersComponent } from './components/organization-members/organization-members.component';
 import { InvitationsComponent } from './components/invitations/invitations.component';
+import { TestMapComponent } from './components/test-map/test-map.component';
+import { AgmCoreModule } from '@agm/core';
+import { AnimationComponent } from './components/animation/animation.component';
+import { TranslateModule, TranslateLoader} from '@ngx-translate/core'
+import { TranslateHttpLoader} from '@ngx-translate/http-loader'
 
 
 
@@ -61,20 +66,37 @@ import { InvitationsComponent } from './components/invitations/invitations.compo
     VolunteerCardComponent,
     CandidateManageComponent,
     OrganizationMembersComponent,
-    InvitationsComponent
+    InvitationsComponent,
+    TestMapComponent,
+    AnimationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+  }),
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
     FormsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyASf3ARKR_Ftf0IC3rWB3h7_ztZW8W2XOc',
+      libraries: ['places']
+    })
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

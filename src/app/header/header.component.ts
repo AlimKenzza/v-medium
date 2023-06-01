@@ -7,6 +7,7 @@ import { ProfilePayload } from '../auth/shared/profile-response.payload';
 import { CookieService } from 'ngx-cookie-service';
 import { VolunteerService } from '../services/volunteer.service';
 import { OrganizationService } from '../services/organization.service';
+import { TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -18,9 +19,17 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
   username: string;
   profile: ProfilePayload;
+  supportLanguages = ['en', 'ru'];
+  lang: string;
 
   constructor(private authService: AuthService, private router: Router, private localStorage: LocalStorageService, private cookieService: CookieService,
-    private volunteerService: VolunteerService, private orgService: OrganizationService) {}
+    private volunteerService: VolunteerService, private orgService: OrganizationService,
+    private translateService: TranslateService) {
+      this.translateService.addLangs(this.supportLanguages);
+      this.translateService.setDefaultLang('ru');
+      const browserLang = this.translateService.getBrowserLang();
+      this.translateService.use(browserLang);
+    }
 
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
@@ -59,6 +68,11 @@ export class HeaderComponent implements OnInit {
 
   getRole() :number {
     return this.localStorage.retrieve('role');
+  }
+
+  selectLang(lang: string) {
+    this.translateService.use(lang);
+    this.localStorage.store('lang', lang);
   }
 
 

@@ -7,6 +7,7 @@ import { Result } from 'src/app/model/event-result.payload';
 import { EventService } from 'src/app/services/event.service';
 import { OrganizationService } from 'src/app/services/organization.service';
 import { VolunteerResponse } from 'src/app/services/volunteer-response.payload';
+import { VolunteerService } from 'src/app/services/volunteer.service';
 import Swal from 'sweetalert2';
 import { OrganizationRequest } from '../organization-create/organization-signup/organization-request.payload';
 
@@ -26,7 +27,7 @@ export class EventShowerComponent implements OnInit {
   volunteers: VolunteerResponse[];
 
   constructor(private activateRoute: ActivatedRoute, private router: Router, private eventService: EventService, private toastr: ToastrService
-    , private localStorage: LocalStorageService, private organizationService: OrganizationService) {
+    , private localStorage: LocalStorageService, private organizationService: OrganizationService, private volunteerService: VolunteerService) {
     this.eventId = this.activateRoute.snapshot.params.id;
    }
 
@@ -107,6 +108,21 @@ export class EventShowerComponent implements OnInit {
     }, error => {
       throwError(error);
     });
+  }
+
+  submitAttendance(code:string) {
+    this.volunteerService.submitAttendance(this.eventId, code)
+      .subscribe(data => {
+        this.router.navigate(['/'],
+          { queryParams: { registered: 'true' } });
+          Swal.fire('You have attended the event!', 'Be ready', 'success').then((result) => {
+            location.reload();
+          });
+      }
+      , error => {
+        console.log(error);
+        this.toastr.error('Attendance failed! Please try again');
+      });
   }
 
 }

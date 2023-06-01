@@ -21,7 +21,7 @@ export class EventService {
   constructor(private httpClient: HttpClient, private authService: AuthService, private localStorage: LocalStorageService) {
    }
    getAllEvents(): Observable<Result[]> {
-    return this.httpClient.get('https://localhost:5001/api/Events/list?Skip=0&Take=10', {observe: 'response'}).
+    return this.httpClient.get('https://localhost:5001/api/Events/list?Skip=0&Take=20', {observe: 'response'}).
     pipe(map(response => {
       this.arrLength = Object.values(response.body)[1].length;
       for(let event = 0; event < this.arrLength; event++) {

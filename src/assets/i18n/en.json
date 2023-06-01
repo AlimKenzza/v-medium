@@ -1,0 +1,23 @@
+{
+    "header": {
+        "navbar1": "Organization",
+        "navbar2": "News",
+        "navbar3": "Events",
+        "navbar4": "Invitations",
+        "title1": "V-MEDIUM",
+        "title2": "VOLUNTEER",
+        "title3": "PLATFORM",
+        "logout": "Logout",
+        "profile": "Profile",
+        "cand": "Candidates",
+        "vol": "Volunteers",
+        "manage": "Manage Events"
+    },
+    "home": {
+        "text1": "Become a volunteer right now and change the world for the better. Explore various events from the largest organizations that strive to make this world a little better, register organizations and publish events in a couple of clicks",
+        "sign": "SIGN IN",
+        "register": "GET STARTED",
+        "text2": "Volunteering is the",
+        "text3": "way to help people"
+    }
+}

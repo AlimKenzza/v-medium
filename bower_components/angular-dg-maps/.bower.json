@@ -1,0 +1,26 @@
+{
+  "name": "angular-dg-maps",
+  "version": "0.0.3",
+  "main": "src/angular-dg-maps.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.0.6"
+  },
+  "homepage": "https://github.com/burivuhster/angular-dg-maps",
+  "_release": "0.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.3",
+    "commit": "dab581667fe057fe9b942169a8d438445bf991f4"
+  },
+  "_source": "https://github.com/burivuhster/angular-dg-maps.git",
+  "_target": "^0.0.3",
+  "_originalSource": "angular-dg-maps",
+  "_direct": true
+}

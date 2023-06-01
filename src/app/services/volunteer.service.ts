@@ -66,4 +66,16 @@ export class VolunteerService {
     );
     return this.httpClient.get<VolunteerResponse>('https://localhost:5001/api/Volunteers/volunteer/id?volunteerId=' + id, {headers:header});
   }
+
+  submitAttendance(eventId: number, code: string){
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "Bearer " + 
+       this.authService.getJwtToken()
+    );
+    return this.httpClient.put('https://localhost:5001/api/Volunteers/volunteer/submit-attendance?eventId=' + eventId + '&code=' + code, null, {headers:header})
+    .pipe(map(data => {
+      return true;
+    }));
+  }
 }
